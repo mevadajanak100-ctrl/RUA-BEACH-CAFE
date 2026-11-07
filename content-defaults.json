@@ -1,0 +1,1931 @@
+{
+  "menuCategories": [
+    {
+      "id": "chaat-snacks",
+      "label": "Chaat & snacks"
+    },
+    {
+      "id": "pizza",
+      "label": "Pizza"
+    },
+    {
+      "id": "soups-salads",
+      "label": "Soups, salads & sides"
+    },
+    {
+      "id": "chinese",
+      "label": "Chinese"
+    },
+    {
+      "id": "coastal-seafood",
+      "label": "Coastal & seafood"
+    },
+    {
+      "id": "tandoor",
+      "label": "Tandoor"
+    },
+    {
+      "id": "sushi-bao",
+      "label": "Sushi & bao"
+    },
+    {
+      "id": "indian-mains",
+      "label": "Indian mains & breads"
+    },
+    {
+      "id": "continental",
+      "label": "Continental"
+    },
+    {
+      "id": "desserts",
+      "label": "Desserts"
+    },
+    {
+      "id": "beverages",
+      "label": "Beverages"
+    }
+  ],
+  "menuItems": [
+    {
+      "category": "chaat-snacks",
+      "name": "Rua's Chana Koliwada Special",
+      "price": "₹249",
+      "diet": "ask",
+      "detail": "Ask the cafe to confirm the ingredients and dietary type.",
+      "id": "rua-menu-1",
+      "description": "Ask the cafe to confirm the ingredients and dietary type.",
+      "image": null,
+      "unitPrice": 249
+    },
+    {
+      "category": "chaat-snacks",
+      "name": "Boiled Corn and Cheese",
+      "price": "₹229",
+      "diet": "veg",
+      "id": "rua-menu-2",
+      "description": "",
+      "image": null,
+      "unitPrice": 229
+    },
+    {
+      "category": "chaat-snacks",
+      "name": "Sweet Potato Chaat",
+      "price": "₹229",
+      "diet": "veg",
+      "id": "rua-menu-3",
+      "description": "",
+      "image": null,
+      "unitPrice": 229
+    },
+    {
+      "category": "chaat-snacks",
+      "name": "Chakli / Peanuts / Chana Dal Mix",
+      "price": "₹129",
+      "diet": "veg",
+      "id": "rua-menu-4",
+      "description": "",
+      "image": null,
+      "unitPrice": 129
+    },
+    {
+      "category": "chaat-snacks",
+      "name": "Egg Bhurji / Masala Omelette with Fries",
+      "price": "₹229",
+      "diet": "non-veg",
+      "id": "rua-menu-5",
+      "description": "",
+      "image": null,
+      "unitPrice": 229
+    },
+    {
+      "category": "chaat-snacks",
+      "name": "Plain Roasted / Fried Papad (2 pcs)",
+      "price": "₹69 / ₹79",
+      "diet": "veg",
+      "id": "rua-menu-6",
+      "description": "",
+      "image": null,
+      "unitPrice": null
+    },
+    {
+      "category": "chaat-snacks",
+      "name": "Masala Khichya Papad",
+      "price": "₹199",
+      "diet": "veg",
+      "id": "rua-menu-7",
+      "description": "",
+      "image": null,
+      "unitPrice": 199
+    },
+    {
+      "category": "pizza",
+      "name": "Classic Margherita",
+      "price": "₹399",
+      "diet": "veg",
+      "detail": "Tomato, olives, fresh basil and mozzarella cheese.",
+      "id": "rua-menu-8",
+      "description": "Tomato, olives, fresh basil and mozzarella cheese.",
+      "image": null,
+      "unitPrice": 399
+    },
+    {
+      "category": "pizza",
+      "name": "Veg Deluxe",
+      "price": "₹399",
+      "diet": "veg",
+      "id": "rua-menu-9",
+      "description": "",
+      "image": null,
+      "unitPrice": 399
+    },
+    {
+      "category": "pizza",
+      "name": "Valparaiso — Veg",
+      "price": "₹399",
+      "diet": "veg",
+      "id": "rua-menu-10",
+      "description": "",
+      "image": null,
+      "unitPrice": 399
+    },
+    {
+      "category": "pizza",
+      "name": "Valparaiso — Chicken",
+      "price": "₹449",
+      "diet": "non-veg",
+      "id": "rua-menu-11",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "pizza",
+      "name": "Mexican — Veg",
+      "price": "₹399",
+      "diet": "veg",
+      "id": "rua-menu-12",
+      "description": "",
+      "image": null,
+      "unitPrice": 399
+    },
+    {
+      "category": "pizza",
+      "name": "Mexican — Chicken",
+      "price": "₹449",
+      "diet": "non-veg",
+      "id": "rua-menu-13",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "pizza",
+      "name": "Cheeseling Veggie Kebab Pizza — Veg",
+      "price": "₹399",
+      "diet": "veg",
+      "id": "rua-menu-14",
+      "description": "",
+      "image": null,
+      "unitPrice": 399
+    },
+    {
+      "category": "pizza",
+      "name": "Cheeseling Veggie Kebab Pizza — Chicken",
+      "price": "₹449",
+      "diet": "non-veg",
+      "id": "rua-menu-15",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "pizza",
+      "name": "Tikka Pizza — Paneer",
+      "price": "₹399",
+      "diet": "veg",
+      "id": "rua-menu-16",
+      "description": "",
+      "image": null,
+      "unitPrice": 399
+    },
+    {
+      "category": "pizza",
+      "name": "Tikka Pizza — Chicken",
+      "price": "₹449",
+      "diet": "non-veg",
+      "id": "rua-menu-17",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "soups-salads",
+      "name": "Burmese Khow Suey Soup — Veg",
+      "price": "₹329",
+      "diet": "veg",
+      "id": "rua-menu-18",
+      "description": "",
+      "image": null,
+      "unitPrice": 329
+    },
+    {
+      "category": "soups-salads",
+      "name": "Burmese Khow Suey Soup — Non-veg",
+      "price": "₹349",
+      "diet": "non-veg",
+      "id": "rua-menu-19",
+      "description": "",
+      "image": null,
+      "unitPrice": 349
+    },
+    {
+      "category": "soups-salads",
+      "name": "Manchow Soup — Veg",
+      "price": "₹229",
+      "diet": "veg",
+      "id": "rua-menu-20",
+      "description": "",
+      "image": null,
+      "unitPrice": 229
+    },
+    {
+      "category": "soups-salads",
+      "name": "Manchow Soup — Non-veg",
+      "price": "₹249",
+      "diet": "non-veg",
+      "id": "rua-menu-21",
+      "description": "",
+      "image": null,
+      "unitPrice": 249
+    },
+    {
+      "category": "soups-salads",
+      "name": "Cream of Tomato Soup",
+      "price": "₹229",
+      "diet": "veg",
+      "id": "rua-menu-22",
+      "description": "",
+      "image": null,
+      "unitPrice": 229
+    },
+    {
+      "category": "soups-salads",
+      "name": "Cream of Chicken Soup",
+      "price": "₹249",
+      "diet": "non-veg",
+      "id": "rua-menu-23",
+      "description": "",
+      "image": null,
+      "unitPrice": 249
+    },
+    {
+      "category": "soups-salads",
+      "name": "Caesar Salad — Veg",
+      "price": "₹399",
+      "diet": "veg",
+      "id": "rua-menu-24",
+      "description": "",
+      "image": null,
+      "unitPrice": 399
+    },
+    {
+      "category": "soups-salads",
+      "name": "Caesar Salad — Chicken",
+      "price": "₹449",
+      "diet": "non-veg",
+      "id": "rua-menu-25",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "soups-salads",
+      "name": "Hummus with Pita Bread",
+      "price": "₹399",
+      "diet": "veg",
+      "id": "rua-menu-26",
+      "description": "",
+      "image": null,
+      "unitPrice": 399
+    },
+    {
+      "category": "soups-salads",
+      "name": "Chilli, Pineapple & Basil Cheese Salad",
+      "price": "₹399",
+      "diet": "veg",
+      "id": "rua-menu-27",
+      "description": "",
+      "image": null,
+      "unitPrice": 399
+    },
+    {
+      "category": "soups-salads",
+      "name": "French Fries",
+      "price": "₹269",
+      "diet": "veg",
+      "id": "rua-menu-28",
+      "description": "",
+      "image": null,
+      "unitPrice": 269
+    },
+    {
+      "category": "soups-salads",
+      "name": "Peri-Peri French Fries",
+      "price": "₹279",
+      "diet": "veg",
+      "id": "rua-menu-29",
+      "description": "",
+      "image": null,
+      "unitPrice": 279
+    },
+    {
+      "category": "soups-salads",
+      "name": "Loaded Fries",
+      "price": "₹299",
+      "diet": "ask",
+      "detail": "Ask the cafe to confirm ingredients and dietary type.",
+      "id": "rua-menu-30",
+      "description": "Ask the cafe to confirm ingredients and dietary type.",
+      "image": null,
+      "unitPrice": 299
+    },
+    {
+      "category": "soups-salads",
+      "name": "Garlic Bread / Cheese Garlic Bread",
+      "price": "₹239 / ₹299",
+      "diet": "veg",
+      "id": "rua-menu-31",
+      "description": "",
+      "image": null,
+      "unitPrice": null
+    },
+    {
+      "category": "soups-salads",
+      "name": "Chilli Cheese Toast",
+      "price": "₹299",
+      "diet": "veg",
+      "id": "rua-menu-32",
+      "description": "",
+      "image": null,
+      "unitPrice": 299
+    },
+    {
+      "category": "chinese",
+      "name": "Crispy Water Chestnut in Lemon Coriander",
+      "price": "₹349",
+      "diet": "veg",
+      "id": "rua-menu-33",
+      "description": "",
+      "image": null,
+      "unitPrice": 349
+    },
+    {
+      "category": "chinese",
+      "name": "Paneer Hot Garlic",
+      "price": "₹379",
+      "diet": "veg",
+      "id": "rua-menu-34",
+      "description": "",
+      "image": null,
+      "unitPrice": 379
+    },
+    {
+      "category": "chinese",
+      "name": "Cigar Roll — Veg",
+      "price": "₹349",
+      "diet": "veg",
+      "id": "rua-menu-35",
+      "description": "",
+      "image": null,
+      "unitPrice": 349
+    },
+    {
+      "category": "chinese",
+      "name": "Cigar Roll — Chicken",
+      "price": "₹379",
+      "diet": "non-veg",
+      "id": "rua-menu-36",
+      "description": "",
+      "image": null,
+      "unitPrice": 379
+    },
+    {
+      "category": "chinese",
+      "name": "Kung Pao Potato",
+      "price": "₹349",
+      "diet": "veg",
+      "id": "rua-menu-37",
+      "description": "",
+      "image": null,
+      "unitPrice": 349
+    },
+    {
+      "category": "chinese",
+      "name": "Kung Pao Paneer",
+      "price": "₹379",
+      "diet": "veg",
+      "id": "rua-menu-38",
+      "description": "",
+      "image": null,
+      "unitPrice": 379
+    },
+    {
+      "category": "chinese",
+      "name": "Kung Pao Chicken",
+      "price": "₹379",
+      "diet": "non-veg",
+      "id": "rua-menu-39",
+      "description": "",
+      "image": null,
+      "unitPrice": 379
+    },
+    {
+      "category": "chinese",
+      "name": "Chilli Paneer",
+      "price": "₹379",
+      "diet": "veg",
+      "id": "rua-menu-40",
+      "description": "",
+      "image": null,
+      "unitPrice": 379
+    },
+    {
+      "category": "chinese",
+      "name": "Chilli Chicken",
+      "price": "₹379",
+      "diet": "non-veg",
+      "id": "rua-menu-41",
+      "description": "",
+      "image": null,
+      "unitPrice": 379
+    },
+    {
+      "category": "chinese",
+      "name": "Chilli Fish",
+      "price": "₹549",
+      "diet": "non-veg",
+      "id": "rua-menu-42",
+      "description": "",
+      "image": null,
+      "unitPrice": 549
+    },
+    {
+      "category": "chinese",
+      "name": "Basil Paneer Chilly",
+      "price": "₹379",
+      "diet": "veg",
+      "id": "rua-menu-43",
+      "description": "",
+      "image": null,
+      "unitPrice": 379
+    },
+    {
+      "category": "chinese",
+      "name": "Basil Chicken Chilly",
+      "price": "₹379",
+      "diet": "non-veg",
+      "id": "rua-menu-44",
+      "description": "",
+      "image": null,
+      "unitPrice": 379
+    },
+    {
+      "category": "chinese",
+      "name": "Veg Crispy",
+      "price": "₹349",
+      "diet": "veg",
+      "id": "rua-menu-45",
+      "description": "",
+      "image": null,
+      "unitPrice": 349
+    },
+    {
+      "category": "chinese",
+      "name": "Chicken Crispy",
+      "price": "₹379",
+      "diet": "non-veg",
+      "id": "rua-menu-46",
+      "description": "",
+      "image": null,
+      "unitPrice": 379
+    },
+    {
+      "category": "chinese",
+      "name": "Manchurian — Dry / Gravy",
+      "price": "₹329 / ₹349",
+      "diet": "veg",
+      "id": "rua-menu-47",
+      "description": "",
+      "image": null,
+      "unitPrice": null
+    },
+    {
+      "category": "chinese",
+      "name": "Crispy Butter Garlic Prawns",
+      "price": "₹599",
+      "diet": "non-veg",
+      "id": "rua-menu-48",
+      "description": "",
+      "image": null,
+      "unitPrice": 599
+    },
+    {
+      "category": "chinese",
+      "name": "Chicken Hot Garlic",
+      "price": "₹379",
+      "diet": "non-veg",
+      "id": "rua-menu-49",
+      "description": "",
+      "image": null,
+      "unitPrice": 379
+    },
+    {
+      "category": "chinese",
+      "name": "Chicken Lollipop",
+      "price": "₹379",
+      "diet": "non-veg",
+      "id": "rua-menu-50",
+      "description": "",
+      "image": null,
+      "unitPrice": 379
+    },
+    {
+      "category": "chinese",
+      "name": "Chicken 65",
+      "price": "₹379",
+      "diet": "non-veg",
+      "id": "rua-menu-51",
+      "description": "",
+      "image": null,
+      "unitPrice": 379
+    },
+    {
+      "category": "coastal-seafood",
+      "name": "Sukkha Chicken",
+      "price": "₹449",
+      "diet": "non-veg",
+      "id": "rua-menu-52",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "coastal-seafood",
+      "name": "Sukkha Mutton",
+      "price": "₹499",
+      "diet": "non-veg",
+      "id": "rua-menu-53",
+      "description": "",
+      "image": null,
+      "unitPrice": 499
+    },
+    {
+      "category": "coastal-seafood",
+      "name": "Chicken Ghee Roast",
+      "price": "₹449",
+      "diet": "non-veg",
+      "id": "rua-menu-54",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "coastal-seafood",
+      "name": "Koliwada Prawns",
+      "price": "₹599",
+      "diet": "non-veg",
+      "id": "rua-menu-55",
+      "description": "",
+      "image": null,
+      "unitPrice": 599
+    },
+    {
+      "category": "coastal-seafood",
+      "name": "Koliwada Fish",
+      "price": "₹549",
+      "diet": "non-veg",
+      "id": "rua-menu-56",
+      "description": "",
+      "image": null,
+      "unitPrice": 549
+    },
+    {
+      "category": "coastal-seafood",
+      "name": "Surmai Tawa / Rawa Fry",
+      "price": "₹549",
+      "diet": "non-veg",
+      "id": "rua-menu-57",
+      "description": "",
+      "image": null,
+      "unitPrice": 549
+    },
+    {
+      "category": "coastal-seafood",
+      "name": "Prawn Tawa / Rawa Fry",
+      "price": "₹549",
+      "diet": "non-veg",
+      "id": "rua-menu-58",
+      "description": "",
+      "image": null,
+      "unitPrice": 549
+    },
+    {
+      "category": "coastal-seafood",
+      "name": "Rawas Tawa / Rawa Fry",
+      "price": "₹549",
+      "diet": "non-veg",
+      "id": "rua-menu-59",
+      "description": "",
+      "image": null,
+      "unitPrice": 549
+    },
+    {
+      "category": "coastal-seafood",
+      "name": "Pomfret Tawa / Rawa Fry",
+      "price": "As per size",
+      "diet": "non-veg",
+      "id": "rua-menu-60",
+      "description": "",
+      "image": null,
+      "unitPrice": null
+    },
+    {
+      "category": "tandoor",
+      "name": "Hara Bhara Tikki",
+      "price": "₹239",
+      "diet": "veg",
+      "id": "rua-menu-61",
+      "description": "",
+      "image": null,
+      "unitPrice": 239
+    },
+    {
+      "category": "tandoor",
+      "name": "Cheese Paneer Kurkure Tikki",
+      "price": "₹275",
+      "diet": "veg",
+      "id": "rua-menu-62",
+      "description": "",
+      "image": null,
+      "unitPrice": 275
+    },
+    {
+      "category": "tandoor",
+      "name": "Chicken Tandoori Lolipop",
+      "price": "₹449",
+      "diet": "non-veg",
+      "id": "rua-menu-63",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "tandoor",
+      "name": "Chicken Rojali Kebab",
+      "price": "₹449",
+      "diet": "non-veg",
+      "id": "rua-menu-64",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "tandoor",
+      "name": "Lal Wari Chicken Kebab",
+      "price": "₹449",
+      "diet": "non-veg",
+      "id": "rua-menu-65",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "tandoor",
+      "name": "Chicken Reshmi Kebab",
+      "price": "₹449",
+      "diet": "non-veg",
+      "id": "rua-menu-66",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "tandoor",
+      "name": "Chicken Tikka / Pahadi Tikka / Malai Tikka / Kalimiri Tikka",
+      "price": "₹449",
+      "diet": "non-veg",
+      "id": "rua-menu-67",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "tandoor",
+      "name": "Fish Tikka",
+      "price": "₹549",
+      "diet": "non-veg",
+      "id": "rua-menu-68",
+      "description": "",
+      "image": null,
+      "unitPrice": 549
+    },
+    {
+      "category": "tandoor",
+      "name": "Tandoori Chicken — Half / Full",
+      "price": "₹349 / ₹599",
+      "diet": "non-veg",
+      "id": "rua-menu-69",
+      "description": "",
+      "image": null,
+      "unitPrice": null
+    },
+    {
+      "category": "tandoor",
+      "name": "Mutton Shikari Kebab",
+      "price": "₹549",
+      "diet": "non-veg",
+      "id": "rua-menu-70",
+      "description": "",
+      "image": null,
+      "unitPrice": 549
+    },
+    {
+      "category": "tandoor",
+      "name": "Mix Platter",
+      "price": "₹2,999",
+      "diet": "non-veg",
+      "detail": "Chicken tikka, kalimiri chicken tikka, zafrani chicken, zafrani prawns and mutton shikari kebab.",
+      "id": "rua-menu-71",
+      "description": "Chicken tikka, kalimiri chicken tikka, zafrani chicken, zafrani prawns and mutton shikari kebab.",
+      "image": null,
+      "unitPrice": 2999
+    },
+    {
+      "category": "sushi-bao",
+      "name": "Tempura Roll",
+      "price": "₹449",
+      "diet": "veg",
+      "id": "rua-menu-72",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "sushi-bao",
+      "name": "Creme Cheese Avocado",
+      "price": "₹449",
+      "diet": "veg",
+      "id": "rua-menu-73",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "sushi-bao",
+      "name": "Avocado Maki",
+      "price": "₹449",
+      "diet": "veg",
+      "id": "rua-menu-74",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "sushi-bao",
+      "name": "Prawns Tempura Uramaki",
+      "price": "₹449",
+      "diet": "non-veg",
+      "id": "rua-menu-75",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "sushi-bao",
+      "name": "Dragon Roll",
+      "price": "₹449",
+      "diet": "non-veg",
+      "id": "rua-menu-76",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "sushi-bao",
+      "name": "Tuna Fried Futu Maki",
+      "price": "₹449",
+      "diet": "non-veg",
+      "id": "rua-menu-77",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "sushi-bao",
+      "name": "Stuffed Bao Bun — Cottage Cheese",
+      "price": "₹349",
+      "diet": "veg",
+      "id": "rua-menu-78",
+      "description": "",
+      "image": null,
+      "unitPrice": 349
+    },
+    {
+      "category": "sushi-bao",
+      "name": "Chicken Stuffed Bao Bun",
+      "price": "₹449",
+      "diet": "non-veg",
+      "id": "rua-menu-79",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "sushi-bao",
+      "name": "Sambal Cottage Cheese Bao",
+      "price": "₹399",
+      "diet": "veg",
+      "id": "rua-menu-80",
+      "description": "",
+      "image": null,
+      "unitPrice": 399
+    },
+    {
+      "category": "sushi-bao",
+      "name": "Kung Pao Paneer Bao",
+      "price": "₹399",
+      "diet": "veg",
+      "id": "rua-menu-81",
+      "description": "",
+      "image": null,
+      "unitPrice": 399
+    },
+    {
+      "category": "sushi-bao",
+      "name": "Kung Pao Chicken Bao",
+      "price": "₹449",
+      "diet": "non-veg",
+      "id": "rua-menu-82",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "indian-mains",
+      "name": "Rua Special Ema Datshi — Veg",
+      "price": "₹499",
+      "diet": "veg",
+      "id": "rua-menu-83",
+      "description": "",
+      "image": null,
+      "unitPrice": 499
+    },
+    {
+      "category": "indian-mains",
+      "name": "Rua Special Ema Datshi — Chicken",
+      "price": "₹549",
+      "diet": "non-veg",
+      "id": "rua-menu-84",
+      "description": "",
+      "image": null,
+      "unitPrice": 549
+    },
+    {
+      "category": "indian-mains",
+      "name": "Thai Curry — Veg",
+      "price": "₹399",
+      "diet": "veg",
+      "id": "rua-menu-85",
+      "description": "",
+      "image": null,
+      "unitPrice": 399
+    },
+    {
+      "category": "indian-mains",
+      "name": "Thai Curry — Chicken",
+      "price": "₹449",
+      "diet": "non-veg",
+      "id": "rua-menu-86",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "indian-mains",
+      "name": "Thai Curry — Prawns",
+      "price": "₹499",
+      "diet": "non-veg",
+      "id": "rua-menu-87",
+      "description": "",
+      "image": null,
+      "unitPrice": 499
+    },
+    {
+      "category": "indian-mains",
+      "name": "Biryani — Veg",
+      "price": "₹429",
+      "diet": "veg",
+      "id": "rua-menu-88",
+      "description": "",
+      "image": null,
+      "unitPrice": 429
+    },
+    {
+      "category": "indian-mains",
+      "name": "Biryani — Chicken",
+      "price": "₹519",
+      "diet": "non-veg",
+      "id": "rua-menu-89",
+      "description": "",
+      "image": null,
+      "unitPrice": 519
+    },
+    {
+      "category": "indian-mains",
+      "name": "Biryani — Mutton",
+      "price": "₹619",
+      "diet": "non-veg",
+      "id": "rua-menu-90",
+      "description": "",
+      "image": null,
+      "unitPrice": 619
+    },
+    {
+      "category": "indian-mains",
+      "name": "Hyderabadi Biryani — Veg / Chicken / Mutton",
+      "price": "₹429 / ₹519 / ₹619",
+      "diet": "ask",
+      "detail": "Ask the cafe to confirm the price for your chosen version.",
+      "id": "rua-menu-91",
+      "description": "Ask the cafe to confirm the price for your chosen version.",
+      "image": null,
+      "unitPrice": null
+    },
+    {
+      "category": "indian-mains",
+      "name": "Jeera Rice / Steam Rice",
+      "price": "₹159 / ₹149",
+      "diet": "veg",
+      "id": "rua-menu-92",
+      "description": "",
+      "image": null,
+      "unitPrice": null
+    },
+    {
+      "category": "indian-mains",
+      "name": "Dal Khichadi",
+      "price": "₹329",
+      "diet": "veg",
+      "id": "rua-menu-93",
+      "description": "",
+      "image": null,
+      "unitPrice": 329
+    },
+    {
+      "category": "indian-mains",
+      "name": "Vegetable Raita / Plain Curd",
+      "price": "₹99 / ₹79",
+      "diet": "veg",
+      "id": "rua-menu-94",
+      "description": "",
+      "image": null,
+      "unitPrice": null
+    },
+    {
+      "category": "indian-mains",
+      "name": "Tandoori Roti / Butter Roti",
+      "price": "₹75 / ₹85",
+      "diet": "veg",
+      "id": "rua-menu-95",
+      "description": "",
+      "image": null,
+      "unitPrice": null
+    },
+    {
+      "category": "indian-mains",
+      "name": "Naan / Butter Naan / Garlic Naan",
+      "price": "₹85 / ₹95 / ₹110",
+      "diet": "veg",
+      "id": "rua-menu-96",
+      "description": "",
+      "image": null,
+      "unitPrice": null
+    },
+    {
+      "category": "indian-mains",
+      "name": "Aloo Paratha / Gobi Paratha",
+      "price": "₹149",
+      "diet": "veg",
+      "id": "rua-menu-97",
+      "description": "",
+      "image": null,
+      "unitPrice": 149
+    },
+    {
+      "category": "continental",
+      "name": "Veg Alfredo Pasta",
+      "price": "₹449",
+      "diet": "veg",
+      "id": "rua-menu-98",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "continental",
+      "name": "Chicken Alfredo Pasta",
+      "price": "₹499",
+      "diet": "non-veg",
+      "id": "rua-menu-99",
+      "description": "",
+      "image": null,
+      "unitPrice": 499
+    },
+    {
+      "category": "continental",
+      "name": "Prawns Alfredo Pasta",
+      "price": "₹599",
+      "diet": "non-veg",
+      "id": "rua-menu-100",
+      "description": "",
+      "image": null,
+      "unitPrice": 599
+    },
+    {
+      "category": "continental",
+      "name": "Veg Arrabbiata Pasta",
+      "price": "₹449",
+      "diet": "veg",
+      "id": "rua-menu-101",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "continental",
+      "name": "Veg Pink Sauce Pasta",
+      "price": "₹449",
+      "diet": "veg",
+      "id": "rua-menu-102",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "continental",
+      "name": "Spaghetti Aglio Olio — Veg",
+      "price": "₹449",
+      "diet": "veg",
+      "id": "rua-menu-103",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "continental",
+      "name": "Cannelloni Pasta — Veg",
+      "price": "₹449",
+      "diet": "veg",
+      "id": "rua-menu-104",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "continental",
+      "name": "Alfredo Mushroom Risotto — Veg",
+      "price": "₹449",
+      "diet": "veg",
+      "id": "rua-menu-105",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "desserts",
+      "name": "Tres Leches",
+      "price": "₹440",
+      "diet": "veg",
+      "id": "rua-menu-106",
+      "description": "",
+      "image": null,
+      "unitPrice": 440
+    },
+    {
+      "category": "desserts",
+      "name": "Lotus Biscoff Cheesecake",
+      "price": "₹400",
+      "diet": "veg",
+      "id": "rua-menu-107",
+      "description": "",
+      "image": null,
+      "unitPrice": 400
+    },
+    {
+      "category": "desserts",
+      "name": "Blueberry Cheesecake",
+      "price": "₹400",
+      "diet": "veg",
+      "id": "rua-menu-108",
+      "description": "",
+      "image": null,
+      "unitPrice": 400
+    },
+    {
+      "category": "desserts",
+      "name": "Ferrero Rocher Pastry",
+      "price": "₹400",
+      "diet": "veg",
+      "id": "rua-menu-109",
+      "description": "",
+      "image": null,
+      "unitPrice": 400
+    },
+    {
+      "category": "desserts",
+      "name": "Gulab Jamun Pastry",
+      "price": "₹350",
+      "diet": "veg",
+      "id": "rua-menu-110",
+      "description": "",
+      "image": null,
+      "unitPrice": 350
+    },
+    {
+      "category": "desserts",
+      "name": "Walnut Brownie with Ice Cream",
+      "price": "₹400",
+      "diet": "veg",
+      "id": "rua-menu-111",
+      "description": "",
+      "image": null,
+      "unitPrice": 400
+    },
+    {
+      "category": "desserts",
+      "name": "Red Velvet Pastry",
+      "price": "₹400",
+      "diet": "veg",
+      "id": "rua-menu-112",
+      "description": "",
+      "image": null,
+      "unitPrice": 400
+    },
+    {
+      "category": "desserts",
+      "name": "Italian Tiramisu Pastry",
+      "price": "₹400",
+      "diet": "veg",
+      "id": "rua-menu-113",
+      "description": "",
+      "image": null,
+      "unitPrice": 400
+    },
+    {
+      "category": "desserts",
+      "name": "Ice Cream",
+      "price": "₹275",
+      "diet": "veg",
+      "id": "rua-menu-114",
+      "description": "",
+      "image": null,
+      "unitPrice": 275
+    },
+    {
+      "category": "beverages",
+      "name": "Mineral Water",
+      "price": "₹50",
+      "diet": "veg",
+      "id": "rua-menu-115",
+      "description": "",
+      "image": null,
+      "unitPrice": 50
+    },
+    {
+      "category": "beverages",
+      "name": "Fresh Lime Soda / Fresh Lime Water",
+      "price": "₹130 / ₹100",
+      "diet": "veg",
+      "id": "rua-menu-116",
+      "description": "",
+      "image": null,
+      "unitPrice": null
+    },
+    {
+      "category": "beverages",
+      "name": "Juice — Mix Fruit / Orange / Pineapple / Cranberry / Guava",
+      "price": "₹130",
+      "diet": "veg",
+      "id": "rua-menu-117",
+      "description": "",
+      "image": null,
+      "unitPrice": 130
+    },
+    {
+      "category": "beverages",
+      "name": "Aerated Drinks — Thums Up / Sprite",
+      "price": "₹70 glass / ₹120 bottle",
+      "diet": "veg",
+      "id": "rua-menu-118",
+      "description": "",
+      "image": null,
+      "unitPrice": null
+    },
+    {
+      "category": "beverages",
+      "name": "Club Soda",
+      "price": "₹30 glass / ₹60 bottle",
+      "diet": "veg",
+      "id": "rua-menu-119",
+      "description": "",
+      "image": null,
+      "unitPrice": null
+    },
+    {
+      "category": "beverages",
+      "name": "American Splash Mocktail",
+      "price": "₹339",
+      "diet": "veg",
+      "id": "rua-menu-120",
+      "description": "",
+      "image": null,
+      "unitPrice": 339
+    },
+    {
+      "category": "beverages",
+      "name": "Spicy Guava Mocktail",
+      "price": "₹339",
+      "diet": "veg",
+      "id": "rua-menu-121",
+      "description": "",
+      "image": null,
+      "unitPrice": 339
+    },
+    {
+      "category": "beverages",
+      "name": "Virgin Pina Colada",
+      "price": "₹339",
+      "diet": "veg",
+      "id": "rua-menu-122",
+      "description": "",
+      "image": null,
+      "unitPrice": 339
+    },
+    {
+      "category": "beverages",
+      "name": "Watermelon Basil Martini (Non-alcoholic menu section)",
+      "price": "₹339",
+      "diet": "veg",
+      "id": "rua-menu-123",
+      "description": "",
+      "image": null,
+      "unitPrice": 339
+    },
+    {
+      "category": "beverages",
+      "name": "Virgin Mojito",
+      "price": "₹339",
+      "diet": "veg",
+      "id": "rua-menu-124",
+      "description": "",
+      "image": null,
+      "unitPrice": 339
+    },
+    {
+      "category": "beverages",
+      "name": "Kit Kat / Oreo / Chocolate / Strawberry Shake",
+      "price": "₹349 each",
+      "diet": "veg",
+      "id": "rua-menu-125",
+      "description": "",
+      "image": null,
+      "unitPrice": null
+    },
+    {
+      "category": "soups-salads",
+      "name": "Parmesan Potato Wedges",
+      "price": "₹279",
+      "diet": "veg",
+      "id": "rua-menu-126",
+      "description": "",
+      "image": null,
+      "unitPrice": 279
+    },
+    {
+      "category": "soups-salads",
+      "name": "Whole Wheat Bread Bruschetta",
+      "price": "₹299",
+      "diet": "veg",
+      "id": "rua-menu-127",
+      "description": "",
+      "image": null,
+      "unitPrice": 299
+    },
+    {
+      "category": "soups-salads",
+      "name": "Guacamole Nachos",
+      "price": "₹429",
+      "diet": "veg",
+      "id": "rua-menu-128",
+      "description": "",
+      "image": null,
+      "unitPrice": 429
+    },
+    {
+      "category": "soups-salads",
+      "name": "Tandoori Cheese Popcorn",
+      "price": "₹399",
+      "diet": "veg",
+      "id": "rua-menu-129",
+      "description": "",
+      "image": null,
+      "unitPrice": 399
+    },
+    {
+      "category": "soups-salads",
+      "name": "Tandoori Chicken Popcorn",
+      "price": "₹449",
+      "diet": "non-veg",
+      "id": "rua-menu-130",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "soups-salads",
+      "name": "Corn Beans Nachos — Veg",
+      "price": "₹399",
+      "diet": "veg",
+      "id": "rua-menu-131",
+      "description": "",
+      "image": null,
+      "unitPrice": 399
+    },
+    {
+      "category": "soups-salads",
+      "name": "Corn Beans Nachos — Chicken",
+      "price": "₹449",
+      "diet": "non-veg",
+      "id": "rua-menu-132",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "soups-salads",
+      "name": "Parmesan Crispy Lotus Fries",
+      "price": "₹349",
+      "diet": "veg",
+      "id": "rua-menu-133",
+      "description": "",
+      "image": null,
+      "unitPrice": 349
+    },
+    {
+      "category": "soups-salads",
+      "name": "Corn Cheese Ball",
+      "price": "₹349",
+      "diet": "veg",
+      "id": "rua-menu-134",
+      "description": "",
+      "image": null,
+      "unitPrice": 349
+    },
+    {
+      "category": "soups-salads",
+      "name": "Fritto Misto — Veg",
+      "price": "₹349",
+      "diet": "veg",
+      "id": "rua-menu-135",
+      "description": "",
+      "image": null,
+      "unitPrice": 349
+    },
+    {
+      "category": "soups-salads",
+      "name": "Fritto Misto — Fish",
+      "price": "₹499",
+      "diet": "non-veg",
+      "id": "rua-menu-136",
+      "description": "",
+      "image": null,
+      "unitPrice": 499
+    },
+    {
+      "category": "soups-salads",
+      "name": "Paneer Kurkure",
+      "price": "₹449",
+      "diet": "veg",
+      "id": "rua-menu-137",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "soups-salads",
+      "name": "Prawns Kurkure",
+      "price": "₹599",
+      "diet": "non-veg",
+      "id": "rua-menu-138",
+      "description": "",
+      "image": null,
+      "unitPrice": 599
+    },
+    {
+      "category": "soups-salads",
+      "name": "Fried Chicken",
+      "price": "₹449",
+      "diet": "non-veg",
+      "id": "rua-menu-139",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "soups-salads",
+      "name": "Grilled Chicken",
+      "price": "₹449",
+      "diet": "non-veg",
+      "id": "rua-menu-140",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "soups-salads",
+      "name": "Satay Chicken",
+      "price": "₹449",
+      "diet": "non-veg",
+      "id": "rua-menu-141",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "soups-salads",
+      "name": "Fish Fingers / Fish & Chips",
+      "price": "₹499 / ₹499",
+      "diet": "non-veg",
+      "id": "rua-menu-142",
+      "description": "",
+      "image": null,
+      "unitPrice": null
+    },
+    {
+      "category": "chinese",
+      "name": "Burnt Chilli Rice — Veg",
+      "price": "₹399",
+      "diet": "veg",
+      "id": "rua-menu-143",
+      "description": "",
+      "image": null,
+      "unitPrice": 399
+    },
+    {
+      "category": "chinese",
+      "name": "Burnt Chilli Rice — Chicken",
+      "price": "₹449",
+      "diet": "non-veg",
+      "id": "rua-menu-144",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "chinese",
+      "name": "Burnt Chilli Rice — Prawns",
+      "price": "₹499",
+      "diet": "non-veg",
+      "id": "rua-menu-145",
+      "description": "",
+      "image": null,
+      "unitPrice": 499
+    },
+    {
+      "category": "chinese",
+      "name": "Schezwan Rice / Noodles — Veg",
+      "price": "₹399",
+      "diet": "veg",
+      "id": "rua-menu-146",
+      "description": "",
+      "image": null,
+      "unitPrice": 399
+    },
+    {
+      "category": "chinese",
+      "name": "Schezwan Rice / Noodles — Chicken",
+      "price": "₹449",
+      "diet": "non-veg",
+      "id": "rua-menu-147",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "chinese",
+      "name": "Schezwan Rice / Noodles — Prawns",
+      "price": "₹499",
+      "diet": "non-veg",
+      "id": "rua-menu-148",
+      "description": "",
+      "image": null,
+      "unitPrice": 499
+    },
+    {
+      "category": "chinese",
+      "name": "Triple Schezwan Rice / Noodles — Veg",
+      "price": "₹430",
+      "diet": "veg",
+      "id": "rua-menu-149",
+      "description": "",
+      "image": null,
+      "unitPrice": 430
+    },
+    {
+      "category": "chinese",
+      "name": "Triple Schezwan Rice / Noodles — Chicken",
+      "price": "₹470",
+      "diet": "non-veg",
+      "id": "rua-menu-150",
+      "description": "",
+      "image": null,
+      "unitPrice": 470
+    },
+    {
+      "category": "chinese",
+      "name": "Triple Schezwan Rice / Noodles — Prawns",
+      "price": "₹499",
+      "diet": "non-veg",
+      "id": "rua-menu-151",
+      "description": "",
+      "image": null,
+      "unitPrice": 499
+    },
+    {
+      "category": "chinese",
+      "name": "Oriental Pot Rice — Veg",
+      "price": "₹399",
+      "diet": "veg",
+      "id": "rua-menu-152",
+      "description": "",
+      "image": null,
+      "unitPrice": 399
+    },
+    {
+      "category": "chinese",
+      "name": "Oriental Pot Rice — Chicken",
+      "price": "₹449",
+      "diet": "non-veg",
+      "id": "rua-menu-153",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "chinese",
+      "name": "Oriental Pot Rice — Prawns",
+      "price": "₹499",
+      "diet": "non-veg",
+      "id": "rua-menu-154",
+      "description": "",
+      "image": null,
+      "unitPrice": 499
+    },
+    {
+      "category": "chinese",
+      "name": "Fried Rice — Veg / Egg / Chicken / Prawns",
+      "price": "₹399 / ₹449 / ₹499",
+      "diet": "ask",
+      "detail": "The scan lists four variants and three prices; ask the cafe for the matching price.",
+      "id": "rua-menu-155",
+      "description": "The scan lists four variants and three prices; ask the cafe for the matching price.",
+      "image": null,
+      "unitPrice": null
+    },
+    {
+      "category": "chinese",
+      "name": "Hakka Noodles — Veg / Egg / Chicken / Prawns",
+      "price": "₹399 / ₹449 / ₹499",
+      "diet": "ask",
+      "detail": "The scan lists four variants and three prices; ask the cafe for the matching price.",
+      "id": "rua-menu-156",
+      "description": "The scan lists four variants and three prices; ask the cafe for the matching price.",
+      "image": null,
+      "unitPrice": null
+    },
+    {
+      "category": "tandoor",
+      "name": "Zafrani Chicken",
+      "price": "₹449",
+      "diet": "non-veg",
+      "id": "rua-menu-157",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "tandoor",
+      "name": "Zafrani Prawns",
+      "price": "₹599",
+      "diet": "non-veg",
+      "id": "rua-menu-158",
+      "description": "",
+      "image": null,
+      "unitPrice": 599
+    },
+    {
+      "category": "tandoor",
+      "name": "Banjara Chicken Kebab",
+      "price": "₹449",
+      "diet": "non-veg",
+      "id": "rua-menu-159",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "tandoor",
+      "name": "Chicken Lasuni",
+      "price": "₹449",
+      "diet": "non-veg",
+      "id": "rua-menu-160",
+      "description": "",
+      "image": null,
+      "unitPrice": 449
+    },
+    {
+      "category": "indian-mains",
+      "name": "Chaas / Masala Chaas",
+      "price": "₹79 / ₹119",
+      "diet": "veg",
+      "id": "rua-menu-161",
+      "description": "",
+      "image": null,
+      "unitPrice": null
+    },
+    {
+      "category": "indian-mains",
+      "name": "Chilli Cheese Naan / Cheese Garlic Naan",
+      "price": "₹130 / ₹140",
+      "diet": "veg",
+      "id": "rua-menu-162",
+      "description": "",
+      "image": null,
+      "unitPrice": null
+    },
+    {
+      "category": "indian-mains",
+      "name": "Kulcha / Butter Kulcha / Garlic Kulcha",
+      "price": "₹85 / ₹95 / ₹95",
+      "diet": "veg",
+      "id": "rua-menu-163",
+      "description": "",
+      "image": null,
+      "unitPrice": null
+    },
+    {
+      "category": "indian-mains",
+      "name": "Laccha Paratha",
+      "price": "₹95",
+      "diet": "veg",
+      "id": "rua-menu-164",
+      "description": "",
+      "image": null,
+      "unitPrice": 95
+    },
+    {
+      "category": "continental",
+      "name": "Chicken Arrabbiata Pasta",
+      "price": "₹499",
+      "diet": "non-veg",
+      "id": "rua-menu-165",
+      "description": "",
+      "image": null,
+      "unitPrice": 499
+    },
+    {
+      "category": "continental",
+      "name": "Prawns Arrabbiata Pasta",
+      "price": "₹599",
+      "diet": "non-veg",
+      "id": "rua-menu-166",
+      "description": "",
+      "image": null,
+      "unitPrice": 599
+    },
+    {
+      "category": "continental",
+      "name": "Chicken Pink Sauce Pasta",
+      "price": "₹499",
+      "diet": "non-veg",
+      "id": "rua-menu-167",
+      "description": "",
+      "image": null,
+      "unitPrice": 499
+    },
+    {
+      "category": "continental",
+      "name": "Prawns Pink Sauce Pasta",
+      "price": "₹599",
+      "diet": "non-veg",
+      "id": "rua-menu-168",
+      "description": "",
+      "image": null,
+      "unitPrice": 599
+    },
+    {
+      "category": "continental",
+      "name": "Chicken Spaghetti Aglio Olio",
+      "price": "₹499",
+      "diet": "non-veg",
+      "id": "rua-menu-169",
+      "description": "",
+      "image": null,
+      "unitPrice": 499
+    },
+    {
+      "category": "continental",
+      "name": "Prawns Spaghetti Aglio Olio",
+      "price": "₹599",
+      "diet": "non-veg",
+      "id": "rua-menu-170",
+      "description": "",
+      "image": null,
+      "unitPrice": 599
+    },
+    {
+      "category": "continental",
+      "name": "Chicken Cannelloni Pasta",
+      "price": "₹499",
+      "diet": "non-veg",
+      "id": "rua-menu-171",
+      "description": "",
+      "image": null,
+      "unitPrice": 499
+    },
+    {
+      "category": "continental",
+      "name": "Prawns Cannelloni Pasta",
+      "price": "₹599",
+      "diet": "non-veg",
+      "id": "rua-menu-172",
+      "description": "",
+      "image": null,
+      "unitPrice": 599
+    },
+    {
+      "category": "continental",
+      "name": "Chicken Alfredo Mushroom Risotto",
+      "price": "₹499",
+      "diet": "non-veg",
+      "id": "rua-menu-173",
+      "description": "",
+      "image": null,
+      "unitPrice": 499
+    },
+    {
+      "category": "continental",
+      "name": "Prawns Alfredo Mushroom Risotto",
+      "price": "₹599",
+      "diet": "non-veg",
+      "id": "rua-menu-174",
+      "description": "",
+      "image": null,
+      "unitPrice": 599
+    }
+  ],
+  "menuScanPages": [
+    {
+      "src": "images/food-menu/food-menu-01.webp",
+      "title": "Food menu page 1",
+      "group": "food"
+    },
+    {
+      "src": "images/bar-menu/bar-menu-01.webp",
+      "title": "Bar menu page 1",
+      "group": "bar"
+    },
+    {
+      "src": "images/food-menu/food-menu-02.webp",
+      "title": "Food menu page 2",
+      "group": "food"
+    },
+    {
+      "src": "images/bar-menu/bar-menu-02.webp",
+      "title": "Bar menu page 2",
+      "group": "bar"
+    },
+    {
+      "src": "images/food-menu/food-menu-03.webp",
+      "title": "Food menu page 3",
+      "group": "food"
+    },
+    {
+      "src": "images/bar-menu/bar-menu-03.webp",
+      "title": "Bar menu page 3",
+      "group": "bar"
+    },
+    {
+      "src": "images/food-menu/food-menu-04.webp",
+      "title": "Food menu page 4",
+      "group": "food"
+    },
+    {
+      "src": "images/bar-menu/bar-menu-04.webp",
+      "title": "Bar menu page 4",
+      "group": "bar"
+    },
+    {
+      "src": "images/food-menu/food-menu-05.webp",
+      "title": "Food menu page 5",
+      "group": "food"
+    },
+    {
+      "src": "images/bar-menu/bar-menu-05.webp",
+      "title": "Bar menu page 5",
+      "group": "bar"
+    },
+    {
+      "src": "images/food-menu/food-menu-06.webp",
+      "title": "Food menu page 6",
+      "group": "food"
+    },
+    {
+      "src": "images/bar-menu/bar-menu-06.webp",
+      "title": "Bar menu page 6",
+      "group": "bar"
+    },
+    {
+      "src": "images/food-menu/food-menu-07.webp",
+      "title": "Food menu page 7",
+      "group": "food"
+    },
+    {
+      "src": "images/bar-menu/bar-menu-07.webp",
+      "title": "Bar menu page 7",
+      "group": "bar"
+    },
+    {
+      "src": "images/food-menu/food-menu-08.webp",
+      "title": "Food menu page 8",
+      "group": "food"
+    },
+    {
+      "src": "images/bar-menu/bar-menu-08.webp",
+      "title": "Bar menu page 8",
+      "group": "bar"
+    },
+    {
+      "src": "images/food-menu/food-menu-09.webp",
+      "title": "Food menu page 9",
+      "group": "food"
+    },
+    {
+      "src": "images/bar-menu/bar-menu-09.webp",
+      "title": "Bar menu page 9",
+      "group": "bar"
+    },
+    {
+      "src": "images/food-menu/food-menu-10.webp",
+      "title": "Food menu page 10",
+      "group": "food"
+    },
+    {
+      "src": "images/bar-menu/bar-menu-10.webp",
+      "title": "Bar menu page 10",
+      "group": "bar"
+    },
+    {
+      "src": "images/food-menu/food-menu-11.webp",
+      "title": "Food menu page 11",
+      "group": "food"
+    },
+    {
+      "src": "images/bar-menu/bar-menu-11.webp",
+      "title": "Bar menu page 11",
+      "group": "bar"
+    }
+  ],
+  "site": {
+    "name": "Rua Beach Cafe",
+    "tagline": "Beachfront Cafe · Gorai, Mumbai",
+    "heroTitle": "Beachside dining in Gorai.",
+    "description": "Find Rua Beach Cafe on Gorai Beach. Check today’s listing details, read guest feedback on the original platforms, or reserve a table with the booking engine.",
+    "about": "Rua Beach Cafe is listed in Gorai, Mumbai. For current menus, guest ratings, and reservation availability, follow the live listing links on this page.",
+    "phone": "+91 7738084845",
+    "email": "",
+    "address": "Sadhguru Bungalow, Beach Front, Gorai, Mumbai 400091",
+    "hours": "Daily, 12:00 PM–1:30 AM",
+    "cuisines": [
+      "North Indian",
+      "Italian",
+      "Indo-Chinese"
+    ],
+    "mapsUrl": "https://www.google.com/maps/place/Rua+Beach+Cafe/@19.2452037,72.7815783,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7b3b9e6fca12d:0xb426a31d81e4cc55!8m2!3d19.2452037!4d72.7815783!16s%2Fg%2F11yb680x0v",
+    "districtUrl": "https://www.district.in/dining/mumbai/rua-beach-cafe-gorai",
+    "googleUrl": "https://www.google.com/maps/place/Rua+Beach+Cafe/@19.2452037,72.7815783,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7b3b9e6fca12d:0xb426a31d81e4cc55!8m2!3d19.2452037!4d72.7815783!16s%2Fg%2F11yb680x0v",
+    "instagramUrl": "",
+    "facebookUrl": ""
+  },
+  "gallery": []
+}

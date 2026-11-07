@@ -1,0 +1,866 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0a1628">
+    <title>Rua Beach Cafe | Admin</title>
+    <meta name="description" content="Secure owner dashboard for Rua Beach Cafe reservations.">
+    <link rel="icon" href="images/logo/rua-beach-cafe-logo.jpeg" type="image/jpeg">
+    <style>
+        :root {
+            --bg: #081521;
+            --panel: #102d40;
+            --panel-soft: #15394e;
+            --text: #f0f8ff;
+            --muted: #b8c9d2;
+            --accent: #00c8dd;
+            --accent-soft: #9cecf3;
+            --success: #71e0bd;
+            --error: #ff8585;
+            --border: rgba(255,255,255,0.14);
+            --shadow: 0 24px 60px rgba(0, 10, 20, 0.35);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            font: 16px/1.5 Inter, ui-sans-serif, system-ui, sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at top left, rgba(0, 200, 221, 0.13), transparent 32%),
+                radial-gradient(circle at bottom right, rgba(33, 143, 163, 0.13), transparent 28%),
+                var(--bg);
+        }
+
+        button, input, textarea, select { font: inherit; }
+
+        button, a { -webkit-tap-highlight-color: transparent; }
+
+        button {
+            min-height: 44px;
+            padding: 10px 16px;
+            border: 0;
+            border-radius: 999px;
+            cursor: pointer;
+        }
+
+        button:focus-visible, input:focus-visible, a:focus-visible {
+            outline: 3px solid var(--accent-soft);
+            outline-offset: 3px;
+        }
+
+        .primary { background: linear-gradient(135deg, var(--accent), #218fa3); color: #081521; font-weight: 800; }
+        .secondary { border: 1px solid var(--border); background: transparent; color: var(--text); }
+        button:disabled { cursor: wait; opacity: 0.6; }
+        a { color: var(--accent-soft); text-decoration: none; }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            padding: 18px max(20px, calc((100% - 1180px) / 2));
+            border-bottom: 1px solid var(--border);
+            background: rgba(8, 21, 33, 0.9);
+            backdrop-filter: blur(16px);
+        }
+
+        .brand { display: grid; gap: 2px; }
+        .brand strong { letter-spacing: 0.08em; text-transform: uppercase; }
+        .brand span { color: var(--muted); font-size: 0.84rem; }
+        .topbar-actions { display: flex; align-items: center; gap: 12px; }
+        #admin-user { color: var(--accent-soft); font-size: 0.9rem; }
+
+        main { width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 54px 0 80px; }
+        .view { display: grid; gap: 22px; }
+        .view[hidden] { display: none; }
+
+        .login-card, .panel {
+            padding: 28px;
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            background: linear-gradient(145deg, rgba(21, 57, 78, 0.96), rgba(10, 29, 44, 0.96));
+            box-shadow: var(--shadow);
+        }
+
+        .login-card { width: min(100%, 480px); margin: 8vh auto 0; }
+        .eyebrow { margin: 0 0 12px; color: var(--accent-soft); font-size: 0.75rem; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; }
+        h1, h2, h3 { margin: 0; line-height: 1.08; }
+        h1 { font-size: clamp(2rem, 5vw, 3.4rem); }
+        h2 { font-size: 1.35rem; }
+        p { color: var(--muted); }
+        .login-card p { margin: 14px 0 24px; }
+
+        form { display: grid; gap: 16px; }
+        label { display: grid; gap: 7px; color: var(--text); font-weight: 700; }
+        input[type="email"], input[type="password"], input[type="number"], input[type="text"], input[type="url"], textarea, select {
+            width: 100%;
+            min-height: 46px;
+            padding: 10px 12px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: rgba(4, 16, 28, 0.8);
+            color: var(--text);
+        }
+        textarea { min-height: 100px; resize: vertical; }
+        select { appearance: auto; }
+        fieldset { min-width: 0; margin: 0; padding: 18px; border: 1px solid var(--border); border-radius: 16px; }
+        legend { padding: 0 8px; color: var(--accent-soft); font-weight: 800; }
+        .content-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+        .content-grid .wide { grid-column: 1 / -1; }
+        .editor-list { display: grid; gap: 12px; }
+        .editor-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)) auto; gap: 10px; align-items: end; padding: 14px; border: 1px solid var(--border); border-radius: 14px; background: rgba(255,255,255,0.04); }
+        .editor-row .wide { grid-column: 1 / -1; }
+        .editor-row .toggle { align-self: end; }
+        .content-help { margin: 0; font-size: 0.86rem; }
+
+        .form-actions, .dashboard-head, .settings-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+        .status { min-height: 24px; margin: 0; font-size: 0.9rem; }
+        .status.error { color: var(--error); }
+        .status.success { color: var(--success); }
+        .hint { margin: 0; font-size: 0.86rem; }
+
+        .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+        .stat { padding: 20px; border: 1px solid var(--border); border-radius: 18px; background: rgba(255,255,255,0.05); }
+        .stat strong, .stat span { display: block; }
+        .stat strong { color: var(--accent-soft); font-size: 2rem; }
+        .stat span { color: var(--muted); font-size: 0.88rem; }
+
+        .settings-grid { display: grid; grid-template-columns: minmax(180px, 260px) minmax(0, 1fr); align-items: end; gap: 18px; }
+        .toggle { display: flex; align-items: center; gap: 10px; min-height: 46px; color: var(--text); }
+        .toggle input { width: 18px; height: 18px; accent-color: var(--accent); }
+
+        .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 16px; }
+        table { width: 100%; min-width: 760px; border-collapse: collapse; }
+        th, td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.08); text-align: left; vertical-align: top; }
+        th { color: var(--accent-soft); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; }
+        td { color: var(--muted); }
+        td strong { display: block; color: var(--text); }
+        tr:last-child td { border-bottom: 0; }
+        .status-badge { display: inline-flex; padding: 4px 9px; border-radius: 999px; background: rgba(113,224,189,0.13); color: var(--success); font-size: 0.78rem; font-weight: 800; text-transform: capitalize; }
+        .status-badge.cancelled { background: rgba(255,133,133,0.12); color: var(--error); }
+        .empty { margin: 0; padding: 28px 0 4px; text-align: center; }
+
+        @media (max-width: 680px) {
+            main { width: min(100% - 24px, 1180px); padding-top: 30px; }
+            .topbar { align-items: flex-start; padding-inline: 14px; }
+            .topbar-actions { align-items: flex-end; flex-direction: column; gap: 6px; }
+            .login-card, .panel { padding: 20px; border-radius: 18px; }
+            .stats, .settings-grid, .content-grid, .editor-row { grid-template-columns: 1fr; }
+            .content-grid .wide, .editor-row .wide { grid-column: auto; }
+            .dashboard-head { align-items: flex-start; flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="index.html">
+            <strong>Rua Beach Cafe</strong>
+            <span>Owner admin dashboard</span>
+        </a>
+        <div class="topbar-actions">
+            <span id="admin-user" hidden></span>
+            <button class="secondary" id="logout-button" type="button" hidden>Log out</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="view" id="login-view">
+            <form class="login-card" id="login-form">
+                <div>
+                    <p class="eyebrow">Secure owner access</p>
+                    <h1>Manage bookings.</h1>
+                    <p>Sign in with the owner account created in Supabase Auth. Only accounts added to the protected admin list can enter.</p>
+                </div>
+                <label for="login-email">Email
+                    <input id="login-email" type="email" autocomplete="username" required>
+                </label>
+                <label for="login-password">Password
+                    <input id="login-password" type="password" autocomplete="current-password" minlength="8" required>
+                </label>
+                <div class="form-actions">
+                    <button class="primary" type="submit">Sign in</button>
+                    <a href="index.html">Back to website</a>
+                </div>
+                <p class="status" id="login-status" role="status" aria-live="polite"></p>
+                <p class="hint">Use deployed HTTPS URL. Never share service-role keys with dashboard users.</p>
+            </form>
+        </section>
+
+        <section class="view" id="dashboard-view" hidden>
+            <div class="dashboard-head">
+                <div>
+                    <p class="eyebrow">Live control room</p>
+                    <h1>Reservations and settings.</h1>
+                </div>
+                <button class="secondary" id="refresh-button" type="button">Refresh</button>
+            </div>
+
+            <div class="stats" aria-live="polite">
+                <div class="stat"><strong id="stat-total">0</strong><span>Total bookings</span></div>
+                <div class="stat"><strong id="stat-upcoming">0</strong><span>Upcoming confirmed</span></div>
+                <div class="stat"><strong id="stat-guests">0</strong><span>Upcoming guests</span></div>
+            </div>
+
+            <section class="panel">
+                <div class="settings-row">
+                    <div>
+                        <p class="eyebrow">Booking settings</p>
+                        <h2>Control online reservations.</h2>
+                    </div>
+                    <p class="hint" id="settings-updated"></p>
+                </div>
+                <form id="settings-form">
+                    <div class="settings-grid">
+                        <label for="capacity-input">Seats per 30-minute slot
+                            <input id="capacity-input" type="number" min="1" max="200" step="1" required>
+                        </label>
+                        <label class="toggle" for="online-enabled-input">
+                            <input id="online-enabled-input" type="checkbox">
+                            Accept online bookings
+                        </label>
+                    </div>
+                    <div class="form-actions">
+                        <button class="primary" type="submit">Save settings</button>
+                        <p class="status" id="settings-status" role="status" aria-live="polite"></p>
+                    </div>
+                </form>
+            </section>
+
+            <section class="panel">
+                <div class="settings-row">
+                    <div>
+                        <p class="eyebrow">Website content</p>
+                        <h2>Update public information without code.</h2>
+                    </div>
+                    <p class="hint" id="content-updated"></p>
+                </div>
+                <form id="content-form">
+                    <fieldset>
+                        <legend>Cafe details</legend>
+                        <div class="content-grid">
+                            <label for="content-name">Cafe name<input id="content-name" type="text" maxlength="80" required></label>
+                            <label for="content-tagline">Tagline<input id="content-tagline" type="text" maxlength="160"></label>
+                            <label for="content-hero-title">Homepage headline<input id="content-hero-title" type="text" maxlength="160"></label>
+                            <label for="content-phone">Phone<input id="content-phone" type="text" maxlength="32"></label>
+                            <label for="content-email">Public email<input id="content-email" type="email" maxlength="254"></label>
+                            <label for="content-hours">Opening hours<input id="content-hours" type="text" maxlength="160"></label>
+                            <label class="wide" for="content-address">Address<input id="content-address" type="text" maxlength="240"></label>
+                            <label class="wide" for="content-description">Homepage description<textarea id="content-description" maxlength="500"></textarea></label>
+                            <label class="wide" for="content-about">About text<textarea id="content-about" maxlength="800"></textarea></label>
+                            <label for="content-cuisines">Cuisine labels<input id="content-cuisines" type="text" maxlength="480" placeholder="North Indian, Italian, Indo-Chinese"></label>
+                            <label for="content-maps-url">Google Maps URL<input id="content-maps-url" type="url" maxlength="600"></label>
+                            <label for="content-district-url">District URL<input id="content-district-url" type="url" maxlength="600"></label>
+                            <label for="content-google-url">Google reviews URL<input id="content-google-url" type="url" maxlength="600"></label>
+                            <label for="content-instagram-url">Instagram URL<input id="content-instagram-url" type="url" maxlength="600"></label>
+                            <label for="content-facebook-url">Facebook URL<input id="content-facebook-url" type="url" maxlength="600"></label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Menu</legend>
+                        <p class="content-help">One category per line: <code>category-id | Category name</code>. Add, edit, or remove dishes below.</p>
+                        <label for="content-categories">Categories<textarea id="content-categories" rows="5"></textarea></label>
+                        <div class="editor-list" id="menu-items-list"></div>
+                        <button class="secondary" id="add-menu-item" type="button">Add menu item</button>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Food photos</legend>
+                        <p class="content-help">Use approved local paths such as <code>images/restaurant/photo.jpg</code> or HTTPS image URLs.</p>
+                        <div class="editor-list" id="gallery-list"></div>
+                        <button class="secondary" id="add-gallery-item" type="button">Add photo</button>
+                    </fieldset>
+
+                    <div class="form-actions">
+                        <button class="primary" type="submit">Save website content</button>
+                        <button class="secondary" id="reset-content" type="button">Reset unsaved changes</button>
+                        <p class="status" id="content-status" role="status" aria-live="polite"></p>
+                    </div>
+                </form>
+            </section>
+
+            <section class="panel">
+                <div class="settings-row">
+                    <div>
+                        <p class="eyebrow">Reservation management</p>
+                        <h2>View and cancel bookings.</h2>
+                    </div>
+                    <p class="hint">Owner actions require a valid session.</p>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Guest</th><th>Date / time</th><th>Party</th><th>Status</th><th>Action</th></tr>
+                        </thead>
+                        <tbody id="reservations-body"></tbody>
+                    </table>
+                </div>
+                <p class="empty" id="reservations-empty" hidden>No reservations found.</p>
+                <p class="status" id="dashboard-status" role="status" aria-live="polite"></p>
+            </section>
+        </section>
+    </main>
+
+    <script>
+        (() => {
+            const sessionKey = 'rua-beach-cafe-admin-session-v1';
+            const loginView = document.querySelector('#login-view');
+            const dashboardView = document.querySelector('#dashboard-view');
+            const loginForm = document.querySelector('#login-form');
+            const loginStatus = document.querySelector('#login-status');
+            const logoutButton = document.querySelector('#logout-button');
+            const adminUser = document.querySelector('#admin-user');
+            const refreshButton = document.querySelector('#refresh-button');
+            const settingsForm = document.querySelector('#settings-form');
+            const settingsStatus = document.querySelector('#settings-status');
+            const dashboardStatus = document.querySelector('#dashboard-status');
+            const capacityInput = document.querySelector('#capacity-input');
+            const onlineEnabledInput = document.querySelector('#online-enabled-input');
+            const settingsUpdated = document.querySelector('#settings-updated');
+            const reservationsBody = document.querySelector('#reservations-body');
+            const reservationsEmpty = document.querySelector('#reservations-empty');
+            const contentForm = document.querySelector('#content-form');
+            const contentStatus = document.querySelector('#content-status');
+            const contentUpdated = document.querySelector('#content-updated');
+            const contentCategories = document.querySelector('#content-categories');
+            const menuItemsList = document.querySelector('#menu-items-list');
+            const galleryList = document.querySelector('#gallery-list');
+            let savedContent = null;
+            let contentState = null;
+
+            function readSession() {
+                try {
+                    return JSON.parse(sessionStorage.getItem(sessionKey) || 'null');
+                } catch (error) {
+                    return null;
+                }
+            }
+
+            function saveSession(session) {
+                sessionStorage.setItem(sessionKey, JSON.stringify(session));
+            }
+
+            function clearSession() {
+                sessionStorage.removeItem(sessionKey);
+            }
+
+            function setStatus(element, message, type = '') {
+                element.textContent = message;
+                element.className = `status ${type}`.trim();
+            }
+
+            function showLogin() {
+                loginView.hidden = false;
+                dashboardView.hidden = true;
+                logoutButton.hidden = true;
+                adminUser.hidden = true;
+            }
+
+            function showDashboard(session) {
+                loginView.hidden = true;
+                dashboardView.hidden = false;
+                logoutButton.hidden = false;
+                adminUser.hidden = false;
+                adminUser.textContent = `${session.user.email} (${session.user.role})`;
+            }
+
+            async function rawRequest(path, options = {}, session = readSession()) {
+                const response = await fetch(path, {
+                    ...options,
+                    headers: {
+                        Accept: 'application/json',
+                        ...(options.body ? { 'Content-Type': 'application/json' } : {}),
+                        ...(session?.accessToken ? { Authorization: `Bearer ${session.accessToken}` } : {}),
+                        ...(options.headers || {})
+                    }
+                });
+                const data = await response.json().catch(() => ({}));
+                return { response, data };
+            }
+
+            async function apiRequest(path, options = {}, retry = true) {
+                const session = readSession();
+                const { response, data } = await rawRequest(path, options, session);
+                if (response.status === 401 && retry && session?.refreshToken) {
+                    const refreshed = await rawRequest('/api/admin?action=refresh', {
+                        method: 'POST',
+                        body: JSON.stringify({ refreshToken: session.refreshToken })
+                    }, null);
+                    if (refreshed.response.ok) {
+                        saveSession(refreshed.data);
+                        return apiRequest(path, options, false);
+                    }
+                    clearSession();
+                    showLogin();
+                }
+                if (!response.ok) {
+                    const error = new Error(data.error || 'Admin request failed.');
+                    error.code = data.code;
+                    throw error;
+                }
+                return data;
+            }
+
+            function dateLabel(value) {
+                const date = new Date(`${value}T00:00:00`);
+                return date.toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
+            }
+
+            function timeLabel(value) {
+                const [rawHour, rawMinute] = value.split(':').map(Number);
+                const hour = rawHour % 12 || 12;
+                const period = rawHour >= 12 ? 'PM' : 'AM';
+                return `${hour}:${String(rawMinute).padStart(2, '0')} ${period}${rawHour < 12 ? ' (next day)' : ''}`;
+            }
+
+            function renderSettings(settings) {
+                capacityInput.value = String(settings.capacityPerSlot);
+                onlineEnabledInput.checked = settings.onlineBookingsEnabled;
+                settingsUpdated.textContent = settings.updatedAt
+                    ? `Last updated ${new Date(settings.updatedAt).toLocaleString('en-IN')}`
+                    : '';
+            }
+
+            function clone(value) {
+                return JSON.parse(JSON.stringify(value));
+            }
+
+            function slug(value, fallback) {
+                const result = String(value || fallback || '')
+                    .toLowerCase()
+                    .trim()
+                    .replace(/[^a-z0-9]+/g, '-')
+                    .replace(/^-+|-+$/g, '');
+                return result || fallback;
+            }
+
+            function field(label, value, type = 'text', wide = false) {
+                const wrapper = document.createElement('label');
+                if (wide) wrapper.className = 'wide';
+                wrapper.append(label);
+                const input = document.createElement(type === 'textarea' ? 'textarea' : 'input');
+                if (type !== 'textarea') input.type = type;
+                input.value = value || '';
+                input.dataset.editorField = label;
+                wrapper.append(input);
+                return wrapper;
+            }
+
+            function renderMenuEditor() {
+                menuItemsList.replaceChildren();
+                const categories = contentState?.menuCategories || [];
+                (contentState?.menuItems || []).forEach((item, index) => {
+                    const row = document.createElement('div');
+                    row.className = 'editor-row';
+                    row.dataset.menuIndex = String(index);
+                    const title = document.createElement('strong');
+                    title.textContent = `Dish ${index + 1}`;
+                    row.append(title);
+                    const categoryLabel = document.createElement('label');
+                    categoryLabel.append('Category');
+                    const category = document.createElement('select');
+                    category.dataset.menuField = 'category';
+                    categories.forEach(option => {
+                        const choice = document.createElement('option');
+                        choice.value = option.id;
+                        choice.textContent = option.label;
+                        choice.selected = option.id === item.category;
+                        category.append(choice);
+                    });
+                    categoryLabel.append(category);
+                    row.append(categoryLabel);
+                    const name = field('Name', item.name);
+                    name.querySelector('input').dataset.menuField = 'name';
+                    row.append(name);
+                    const price = field('Price', item.price);
+                    price.querySelector('input').dataset.menuField = 'price';
+                    row.append(price);
+                    const dietLabel = document.createElement('label');
+                    dietLabel.append('Diet');
+                    const diet = document.createElement('select');
+                    diet.dataset.menuField = 'diet';
+                    [['veg', 'Vegetarian'], ['non-veg', 'Non-vegetarian'], ['ask', 'Ask cafe']].forEach(([value, label]) => {
+                        const option = document.createElement('option');
+                        option.value = value;
+                        option.textContent = label;
+                        option.selected = value === item.diet;
+                        diet.append(option);
+                    });
+                    dietLabel.append(diet);
+                    row.append(dietLabel);
+                    const description = field('Description', item.description, 'textarea', true);
+                    description.querySelector('textarea').dataset.menuField = 'description';
+                    row.append(description);
+                    const availableLabel = document.createElement('label');
+                    availableLabel.className = 'toggle';
+                    const available = document.createElement('input');
+                    available.type = 'checkbox';
+                    available.checked = item.available !== false;
+                    available.dataset.menuField = 'available';
+                    availableLabel.append(available, 'Shown on website');
+                    row.append(availableLabel);
+                    const remove = document.createElement('button');
+                    remove.type = 'button';
+                    remove.className = 'secondary';
+                    remove.dataset.menuDelete = String(index);
+                    remove.textContent = 'Remove';
+                    row.append(remove);
+                    menuItemsList.append(row);
+                });
+            }
+
+            function renderGalleryEditor() {
+                galleryList.replaceChildren();
+                (contentState?.gallery || []).forEach((item, index) => {
+                    const row = document.createElement('div');
+                    row.className = 'editor-row';
+                    row.dataset.galleryIndex = String(index);
+                    const src = field('Image URL or local path', item.src, 'text', true);
+                    src.querySelector('input').dataset.galleryField = 'src';
+                    row.append(src);
+                    const alt = field('Accessible alt text', item.alt);
+                    alt.querySelector('input').dataset.galleryField = 'alt';
+                    row.append(alt);
+                    const caption = field('Caption', item.caption || item.title);
+                    caption.querySelector('input').dataset.galleryField = 'caption';
+                    row.append(caption);
+                    const remove = document.createElement('button');
+                    remove.type = 'button';
+                    remove.className = 'secondary';
+                    remove.dataset.galleryDelete = String(index);
+                    remove.textContent = 'Remove';
+                    row.append(remove);
+                    galleryList.append(row);
+                });
+            }
+
+            function parseCategories() {
+                return contentCategories.value.split('\n').map(line => line.trim()).filter(Boolean).map((line, index) => {
+                    const separator = line.indexOf('|');
+                    const rawId = separator < 0 ? line : line.slice(0, separator);
+                    const label = (separator < 0 ? line : line.slice(separator + 1)).trim();
+                    return { id: slug(rawId, `category-${index + 1}`), label: label || rawId.trim() };
+                });
+            }
+
+            function readContentForm() {
+                const categories = parseCategories();
+                const menuItems = Array.from(menuItemsList.querySelectorAll('[data-menu-index]')).map(row => {
+                    const index = Number(row.dataset.menuIndex);
+                    const original = contentState.menuItems[index] || {};
+                    const price = row.querySelector('[data-menu-field="price"]')?.value.trim() || '';
+                    return {
+                        id: original.id || `menu-item-${index + 1}`,
+                        category: row.querySelector('[data-menu-field="category"]')?.value || '',
+                        name: row.querySelector('[data-menu-field="name"]')?.value.trim() || '',
+                        price,
+                        diet: row.querySelector('[data-menu-field="diet"]')?.value || 'ask',
+                        description: row.querySelector('[data-menu-field="description"]')?.value.trim() || '',
+                        image: original.image || '',
+                        unitPrice: /^₹[\d,]+$/.test(price) ? Number(price.replace(/\D/g, '')) : null,
+                        available: row.querySelector('[data-menu-field="available"]')?.checked !== false
+                    };
+                });
+                const gallery = Array.from(galleryList.querySelectorAll('[data-gallery-index]')).map(row => {
+                    const index = Number(row.dataset.galleryIndex);
+                    const original = contentState.gallery[index] || {};
+                    return {
+                        id: original.id || `gallery-${index + 1}`,
+                        src: row.querySelector('[data-gallery-field="src"]')?.value.trim() || '',
+                        alt: row.querySelector('[data-gallery-field="alt"]')?.value.trim() || '',
+                        title: original.title || '',
+                        caption: row.querySelector('[data-gallery-field="caption"]')?.value.trim() || '',
+                        group: original.group || 'food',
+                        width: original.width || 1200,
+                        height: original.height || 900
+                    };
+                });
+                const site = {
+                    name: document.querySelector('#content-name').value.trim(),
+                    tagline: document.querySelector('#content-tagline').value.trim(),
+                    heroTitle: document.querySelector('#content-hero-title').value.trim(),
+                    description: document.querySelector('#content-description').value.trim(),
+                    about: document.querySelector('#content-about').value.trim(),
+                    phone: document.querySelector('#content-phone').value.trim(),
+                    email: document.querySelector('#content-email').value.trim(),
+                    address: document.querySelector('#content-address').value.trim(),
+                    hours: document.querySelector('#content-hours').value.trim(),
+                    cuisines: document.querySelector('#content-cuisines').value.split(',').map(value => value.trim()).filter(Boolean),
+                    mapsUrl: document.querySelector('#content-maps-url').value.trim(),
+                    districtUrl: document.querySelector('#content-district-url').value.trim(),
+                    googleUrl: document.querySelector('#content-google-url').value.trim(),
+                    instagramUrl: document.querySelector('#content-instagram-url').value.trim(),
+                    facebookUrl: document.querySelector('#content-facebook-url').value.trim()
+                };
+                return { ...contentState, site, menuCategories: categories, menuItems, gallery };
+            }
+
+            function renderContent(content) {
+                contentState = clone(content || {});
+                contentState.site = contentState.site || {};
+                contentState.menuCategories = Array.isArray(contentState.menuCategories) ? contentState.menuCategories : [];
+                contentState.menuItems = Array.isArray(contentState.menuItems) ? contentState.menuItems : [];
+                contentState.gallery = Array.isArray(contentState.gallery) ? contentState.gallery : [];
+                const site = contentState.site;
+                const values = {
+                    name: site.name,
+                    tagline: site.tagline,
+                    heroTitle: site.heroTitle,
+                    description: site.description,
+                    about: site.about,
+                    phone: site.phone,
+                    email: site.email,
+                    address: site.address,
+                    hours: site.hours,
+                    cuisines: (site.cuisines || []).join(', '),
+                    mapsUrl: site.mapsUrl,
+                    districtUrl: site.districtUrl,
+                    googleUrl: site.googleUrl,
+                    instagramUrl: site.instagramUrl,
+                    facebookUrl: site.facebookUrl
+                };
+                Object.entries(values).forEach(([key, value]) => {
+                    const input = document.querySelector(`#content-${key}`);
+                    if (input) input.value = value || '';
+                });
+                contentCategories.value = contentState.menuCategories.map(item => `${item.id} | ${item.label}`).join('\n');
+                renderMenuEditor();
+                renderGalleryEditor();
+            }
+
+            async function loadDefaultContent() {
+                try {
+                    const response = await fetch('content-defaults.json', { cache: 'no-store' });
+                    if (!response.ok) throw new Error(`Default content request failed with ${response.status}.`);
+                    return await response.json();
+                } catch (error) {
+                    console.warn('Default content could not be loaded.', error);
+                    return { site: { name: 'Rua Beach Cafe' }, menuCategories: [], menuItems: [], menuScanPages: [], gallery: [] };
+                }
+            }
+
+            function cell(text, strong = false) {
+                const element = document.createElement(strong ? 'strong' : 'span');
+                element.textContent = text;
+                return element;
+            }
+
+            function renderReservations(reservations) {
+                reservationsBody.replaceChildren();
+                const confirmed = reservations.filter(item => item.status === 'confirmed');
+                const today = new Date().toISOString().slice(0, 10);
+                const upcoming = confirmed.filter(item => item.date >= today);
+                document.querySelector('#stat-total').textContent = String(reservations.length);
+                document.querySelector('#stat-upcoming').textContent = String(upcoming.length);
+                document.querySelector('#stat-guests').textContent = String(upcoming.reduce((sum, item) => sum + item.guests, 0));
+                reservationsEmpty.hidden = reservations.length > 0;
+
+                reservations.forEach(reservation => {
+                    const row = document.createElement('tr');
+                    const guest = document.createElement('td');
+                    guest.append(cell(reservation.name, true), cell(`${reservation.code} | ${reservation.phone}`));
+                    if (reservation.email) guest.append(cell(reservation.email));
+                    const when = document.createElement('td');
+                    when.append(cell(dateLabel(reservation.date), true), cell(timeLabel(reservation.time)));
+                    const party = document.createElement('td');
+                    party.textContent = `${reservation.guests} ${reservation.guests === 1 ? 'guest' : 'guests'}`;
+                    const status = document.createElement('td');
+                    const badge = document.createElement('span');
+                    badge.className = `status-badge${reservation.status === 'cancelled' ? ' cancelled' : ''}`;
+                    badge.textContent = reservation.status;
+                    status.append(badge);
+                    const action = document.createElement('td');
+                    if (reservation.status === 'confirmed') {
+                        const cancel = document.createElement('button');
+                        cancel.type = 'button';
+                        cancel.className = 'secondary';
+                        cancel.textContent = 'Cancel';
+                        cancel.dataset.cancelCode = reservation.code;
+                        cancel.dataset.cancelPhone = reservation.phone;
+                        action.append(cancel);
+                    } else {
+                        action.textContent = '-';
+                    }
+                    row.append(guest, when, party, status, action);
+                    reservationsBody.append(row);
+                });
+            }
+
+            async function loadDashboard() {
+                setStatus(dashboardStatus, 'Loading...');
+                const session = readSession();
+                if (!session) return showLogin();
+                try {
+                    showDashboard(session);
+                    const data = await apiRequest('/api/admin?action=dashboard');
+                    renderSettings(data.settings);
+                    renderReservations(data.reservations);
+                    const content = data.content?.site?.name ? data.content : await loadDefaultContent();
+                    renderContent(content);
+                    savedContent = clone(content);
+                    contentUpdated.textContent = data.contentUpdatedAt
+                        ? `Last updated ${new Date(data.contentUpdatedAt).toLocaleString('en-IN')}`
+                        : 'Using built-in content until first save.';
+                    setStatus(dashboardStatus, `Loaded ${data.reservations.length} reservations.`, 'success');
+                } catch (error) {
+                    setStatus(dashboardStatus, error.message, 'error');
+                }
+            }
+
+            loginForm.addEventListener('submit', async event => {
+                event.preventDefault();
+                setStatus(loginStatus, 'Signing in...');
+                const button = loginForm.querySelector('button[type="submit"]');
+                button.disabled = true;
+                try {
+                    const { response, data } = await rawRequest('/api/admin?action=login', {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            email: document.querySelector('#login-email').value.trim(),
+                            password: document.querySelector('#login-password').value
+                        })
+                    }, null);
+                    if (!response.ok) throw new Error(data.error || 'Sign in failed.');
+                    saveSession(data);
+                    loginForm.reset();
+                    await loadDashboard();
+                } catch (error) {
+                    setStatus(loginStatus, error.message, 'error');
+                } finally {
+                    button.disabled = false;
+                }
+            });
+
+            document.querySelector('#add-menu-item').addEventListener('click', () => {
+                if (!contentState) return;
+                contentState = readContentForm();
+                contentState.menuItems.push({
+                    id: `menu-item-${Date.now()}`,
+                    category: contentState.menuCategories[0]?.id || '',
+                    name: '',
+                    price: '',
+                    diet: 'ask',
+                    description: '',
+                    image: '',
+                    unitPrice: null,
+                    available: true
+                });
+                renderMenuEditor();
+            });
+
+            menuItemsList.addEventListener('click', event => {
+                const button = event.target.closest('[data-menu-delete]');
+                if (!button || !contentState) return;
+                contentState = readContentForm();
+                contentState.menuItems.splice(Number(button.dataset.menuDelete), 1);
+                renderMenuEditor();
+            });
+
+            document.querySelector('#add-gallery-item').addEventListener('click', () => {
+                if (!contentState) return;
+                contentState = readContentForm();
+                contentState.gallery.push({
+                    id: `gallery-${Date.now()}`,
+                    src: '',
+                    alt: '',
+                    title: '',
+                    caption: '',
+                    group: 'food',
+                    width: 1200,
+                    height: 900
+                });
+                renderGalleryEditor();
+            });
+
+            galleryList.addEventListener('click', event => {
+                const button = event.target.closest('[data-gallery-delete]');
+                if (!button || !contentState) return;
+                contentState = readContentForm();
+                contentState.gallery.splice(Number(button.dataset.galleryDelete), 1);
+                renderGalleryEditor();
+            });
+
+            contentForm.addEventListener('submit', async event => {
+                event.preventDefault();
+                setStatus(contentStatus, 'Saving...');
+                const button = contentForm.querySelector('button[type="submit"]');
+                button.disabled = true;
+                try {
+                    const content = readContentForm();
+                    const data = await apiRequest('/api/admin?action=content', {
+                        method: 'PATCH',
+                        body: JSON.stringify({ content })
+                    });
+                    renderContent(data.content);
+                    savedContent = clone(data.content);
+                    contentUpdated.textContent = data.updatedAt
+                        ? `Last updated ${new Date(data.updatedAt).toLocaleString('en-IN')}`
+                        : 'Saved.';
+                    setStatus(contentStatus, 'Website content saved.', 'success');
+                } catch (error) {
+                    setStatus(contentStatus, error.message, 'error');
+                } finally {
+                    button.disabled = false;
+                }
+            });
+
+            document.querySelector('#reset-content').addEventListener('click', () => {
+                if (savedContent) renderContent(savedContent);
+                setStatus(contentStatus, 'Unsaved changes reset.', 'success');
+            });
+
+            settingsForm.addEventListener('submit', async event => {
+                event.preventDefault();
+                setStatus(settingsStatus, 'Saving...');
+                const button = settingsForm.querySelector('button[type="submit"]');
+                button.disabled = true;
+                try {
+                    const data = await apiRequest('/api/admin?action=settings', {
+                        method: 'PATCH',
+                        body: JSON.stringify({
+                            capacityPerSlot: Number(capacityInput.value),
+                            onlineBookingsEnabled: onlineEnabledInput.checked
+                        })
+                    });
+                    renderSettings(data.settings);
+                    setStatus(settingsStatus, 'Settings saved.', 'success');
+                } catch (error) {
+                    setStatus(settingsStatus, error.message, 'error');
+                } finally {
+                    button.disabled = false;
+                }
+            });
+
+            reservationsBody.addEventListener('click', async event => {
+                const button = event.target.closest('[data-cancel-code]');
+                if (!button || !window.confirm(`Cancel reservation ${button.dataset.cancelCode}?`)) return;
+                button.disabled = true;
+                try {
+                    await apiRequest('/api/admin?action=cancel', {
+                        method: 'POST',
+                        body: JSON.stringify({ code: button.dataset.cancelCode, phone: button.dataset.cancelPhone })
+                    });
+                    await loadDashboard();
+                } catch (error) {
+                    setStatus(dashboardStatus, error.message, 'error');
+                    button.disabled = false;
+                }
+            });
+
+            refreshButton.addEventListener('click', loadDashboard);
+            logoutButton.addEventListener('click', () => {
+                clearSession();
+                showLogin();
+                setStatus(loginStatus, 'Signed out.', 'success');
+            });
+
+            if (readSession()) loadDashboard();
+            else showLogin();
+        })();
+    </script>
+</body>
+</html>

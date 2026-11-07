@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0a1628" />
+    <meta name="theme-color" content="#f5efe2" />
     <title>Rua Beach Cafe | Gorai, Mumbai</title>
-    <meta name="description" content="Visit Rua Beach Cafe in Gorai, Mumbai. Check opening hours, explore current guest ratings and listing details, get directions, call, or book on District." />
+    <meta name="description" content="Visit Rua Beach Cafe in Gorai, Mumbai. Check opening hours, explore current guest ratings and listing details, get directions, call, or reserve a table with the booking engine." />
+    <link rel="icon" href="images/logo/rua-beach-cafe-logo.jpeg" type="image/jpeg" />
     <!-- TODO deploy: add a canonical link here once the verified public HTTPS page URL is known. -->
     <meta property="og:type" content="restaurant.restaurant" />
     <meta property="og:site_name" content="Rua Beach Cafe" />
     <meta property="og:title" content="Rua Beach Cafe | Gorai, Mumbai" />
-    <meta property="og:description" content="Visit Rua Beach Cafe in Gorai, Mumbai. Check hours, guest ratings and listing details, get directions, call, or book on District." />
+    <meta property="og:description" content="Visit Rua Beach Cafe in Gorai, Mumbai. Check hours, guest ratings and listing details, get directions, call, or reserve a table with the booking engine." />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Rua Beach Cafe | Gorai, Mumbai" />
-    <meta name="twitter:description" content="Check hours, guest ratings and listing details, get directions, call, or book Rua Beach Cafe on District." />
+    <meta name="twitter:description" content="Check hours, guest ratings and listing details, get directions, call, or reserve a table at Rua Beach Cafe." />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -80,9 +81,11 @@
 
         html {
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
         body {
+            overflow-x: hidden;
             font-family: 'Inter', sans-serif;
             background:
                 radial-gradient(circle at top left, rgba(0, 200, 221, 0.12), transparent 30%),
@@ -579,16 +582,10 @@
             position: sticky;
             top: 76px;
             z-index: 5;
-            flex-wrap: nowrap;
-            overflow-x: auto;
+            flex-wrap: wrap;
+            overflow-x: visible;
             padding: 10px 0;
-            background: var(--bg);
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-
-        .menu-category-nav::-webkit-scrollbar {
-            display: none;
+            background: transparent;
         }
 
         .menu-scroll-hint {
@@ -916,7 +913,7 @@
             color: var(--muted);
         }
 
-        .story-list li span {
+        .story-list li > span {
             width: 28px;
             height: 28px;
             display: grid;
@@ -1283,6 +1280,250 @@
 
         .site-footer a {
             color: var(--accent-soft);
+        }
+
+        .booking-panel {
+            display: grid;
+            gap: 22px;
+        }
+
+        .booking-form {
+            display: grid;
+            gap: 18px;
+        }
+
+        .booking-form[hidden],
+        .booking-confirmation[hidden],
+        .booking-lookup-result[hidden] {
+            display: none;
+        }
+
+        .booking-fields {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .booking-field {
+            display: grid;
+            gap: 7px;
+        }
+
+        .booking-honeypot {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .booking-field.full {
+            grid-column: 1 / -1;
+        }
+
+        .booking-field label,
+        .booking-consent {
+            color: var(--text);
+            font-size: 0.88rem;
+            font-weight: 700;
+        }
+
+        .booking-field input,
+        .booking-field select,
+        .booking-field textarea,
+        .booking-lookup-form input {
+            width: 100%;
+            min-height: 46px;
+            padding: 10px 12px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: rgba(4, 16, 28, 0.82);
+            color: var(--text);
+        }
+
+        .booking-field textarea {
+            min-height: 92px;
+            resize: vertical;
+        }
+
+        .booking-field input:invalid:not(:placeholder-shown),
+        .booking-field select:invalid,
+        .booking-field textarea:invalid:not(:placeholder-shown) {
+            border-color: rgba(255, 133, 133, 0.8);
+        }
+
+        .booking-availability {
+            display: flex;
+            justify-content: space-between;
+            gap: 14px;
+            padding: 14px 16px;
+            border: 1px solid rgba(113, 224, 189, 0.32);
+            border-radius: 14px;
+            background: rgba(113, 224, 189, 0.08);
+        }
+
+        .booking-availability[data-state="limited"] {
+            border-color: rgba(255, 197, 105, 0.46);
+            background: rgba(255, 197, 105, 0.09);
+        }
+
+        .booking-availability[data-state="closed"] {
+            border-color: rgba(255, 133, 133, 0.5);
+            background: rgba(255, 133, 133, 0.08);
+        }
+
+        .booking-availability strong {
+            color: var(--text);
+        }
+
+        .booking-availability span,
+        .booking-form-status,
+        .booking-helper,
+        .booking-privacy {
+            color: var(--muted);
+            font-size: 0.84rem;
+        }
+
+        .booking-consent {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        .booking-consent input {
+            width: 18px;
+            height: 18px;
+            margin-top: 2px;
+            accent-color: var(--accent);
+            flex: 0 0 auto;
+        }
+
+        .booking-submit-row,
+        .booking-actions,
+        .booking-lookup-form {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .booking-submit-row .primary-btn,
+        .booking-actions .secondary-btn,
+        .booking-actions .primary-btn,
+        .booking-lookup-form .secondary-btn {
+            padding: 12px 18px;
+        }
+
+        .booking-confirmation {
+            display: grid;
+            gap: 16px;
+            padding: 22px;
+            border: 1px solid rgba(113, 224, 189, 0.4);
+            border-radius: 20px;
+            background: linear-gradient(145deg, rgba(113, 224, 189, 0.12), rgba(0, 0, 0, 0.16));
+        }
+
+        .booking-confirmation h3 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        .booking-code {
+            color: var(--accent-soft);
+            font-size: 1.15rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+        }
+
+        .booking-summary-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .booking-summary-grid div {
+            padding: 12px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .booking-summary-grid strong,
+        .booking-summary-grid span {
+            display: block;
+        }
+
+        .booking-summary-grid span {
+            margin-top: 3px;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .booking-manage {
+            display: grid;
+            gap: 12px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .booking-manage h3 {
+            margin: 0;
+            font-size: 1.7rem;
+        }
+
+        .booking-lookup-form {
+            align-items: stretch;
+        }
+
+        .booking-lookup-form input {
+            flex: 1 1 180px;
+        }
+
+        .booking-lookup-result {
+            display: grid;
+            gap: 8px;
+            padding: 14px;
+            border-radius: 14px;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .booking-lookup-result[data-state="error"] {
+            color: var(--error);
+        }
+
+        .booking-lookup-result[data-state="success"] {
+            border: 1px solid rgba(113, 224, 189, 0.3);
+        }
+
+        .booking-privacy {
+            margin: 0;
+        }
+
+        @media (max-width: 640px) {
+            .booking-fields,
+            .booking-summary-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .booking-field.full {
+                grid-column: auto;
+            }
+
+            .booking-availability {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .booking-actions > *,
+            .booking-submit-row > * {
+                flex: 1 1 100%;
+            }
         }
 
         .modal-close,
@@ -1823,6 +2064,605 @@
                 transform: none;
             }
         }
+
+        :root {
+            color-scheme: light;
+            --bg: #f5efe2;
+            --surface: #fffaf0;
+            --surface-elevated: #fffdf8;
+            --accent: #b85e45;
+            --accent-soft: #315b4b;
+            --accent-secondary: #d89b58;
+            --text: #293b32;
+            --muted: #69766d;
+            --success: #397652;
+            --error: #a84d42;
+            --border: rgba(50, 68, 55, 0.18);
+            --shadow: 0 20px 48px rgba(89, 70, 45, 0.12);
+        }
+
+        html[data-theme="dark"] {
+            color-scheme: dark;
+            --bg: #101c20;
+            --surface: #19282b;
+            --surface-elevated: #1d2e31;
+            --accent: #e18a68;
+            --accent-soft: #b4d0b4;
+            --accent-secondary: #d2a267;
+            --text: #f2eadb;
+            --muted: #b7c0b5;
+            --success: #91c99b;
+            --error: #ee9a87;
+            --border: rgba(232, 226, 208, 0.18);
+            --shadow: 0 20px 48px rgba(0, 0, 0, 0.28);
+        }
+
+        body {
+            background:
+                radial-gradient(ellipse at 8% 4%, rgba(220, 160, 94, 0.12), transparent 28%),
+                radial-gradient(ellipse at 88% 34%, rgba(74, 119, 91, 0.08), transparent 30%),
+                repeating-linear-gradient(0deg, rgba(122, 100, 67, 0.018) 0, rgba(122, 100, 67, 0.018) 1px, transparent 1px, transparent 5px),
+                var(--bg);
+        }
+
+        .site-header {
+            background: rgba(249, 244, 233, 0.94);
+            border-bottom-color: rgba(50, 68, 55, 0.14);
+            box-shadow: 0 5px 22px rgba(89, 70, 45, 0.06);
+        }
+
+        .logo {
+            color: var(--text);
+            letter-spacing: 0.04em;
+        }
+
+        .logo-mark {
+            border: 2px solid var(--surface);
+            box-shadow: 0 4px 12px rgba(89, 70, 45, 0.18);
+        }
+
+        .nav-links a {
+            color: var(--text);
+        }
+
+        .nav-links a:hover,
+        .nav-links a[aria-current="location"] {
+            color: var(--accent);
+        }
+
+        .nav-cta,
+        .primary-btn {
+            background: var(--accent);
+            color: #fffaf0;
+            box-shadow: 0 8px 18px rgba(184, 94, 69, 0.2);
+        }
+
+        .nav-cta:hover,
+        .primary-btn:hover {
+            background: #a94f39;
+        }
+
+        .header-call,
+        .cart-toggle,
+        .nav-toggle {
+            color: var(--accent-soft);
+            border-color: var(--border);
+        }
+
+        .cart-toggle {
+            background: var(--surface);
+        }
+
+        .theme-toggle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            min-width: 44px;
+            min-height: 44px;
+            padding: 0 12px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: var(--surface);
+            color: var(--text);
+            font: inherit;
+            font-size: 0.84rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent);
+        }
+
+        .cart-count {
+            background: var(--accent);
+            color: #fffaf0;
+        }
+
+        .secondary-btn {
+            background: rgba(255, 250, 240, 0.72);
+            border-color: var(--border);
+            color: var(--text);
+        }
+
+        .hero {
+            padding-top: 92px;
+        }
+
+        .eyebrow {
+            color: var(--accent);
+            font-family: 'Caveat', cursive;
+            font-size: 1.55rem;
+            font-weight: 600;
+            letter-spacing: 0.025em;
+            text-transform: none;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            color: var(--text);
+        }
+
+        h1 {
+            position: relative;
+            max-width: 11ch;
+            font-size: clamp(3.75rem, 7.6vw, 7.1rem);
+            line-height: 0.9;
+        }
+
+        h1::after {
+            display: block;
+            width: 102px;
+            margin-top: 18px;
+            border-top: 4px solid var(--accent-secondary);
+            border-radius: 50%;
+            content: "";
+            transform: rotate(-3deg);
+        }
+
+        .lead {
+            max-width: 48ch;
+        }
+
+        .stats strong {
+            color: var(--accent);
+        }
+
+        .stats span {
+            color: var(--muted);
+        }
+
+        .hero-visual {
+            min-height: 600px;
+        }
+
+        .hotel-entry-image {
+            width: min(460px, 88%);
+            border: 9px solid var(--surface);
+            border-radius: 47% 47% 22px 22px;
+            box-shadow: 0 22px 44px rgba(72, 67, 45, 0.2);
+            transform: rotate(1.4deg);
+        }
+
+        .hotel-entry-image img {
+            border-radius: 44% 44% 14px 14px;
+            filter: brightness(0.98) contrast(1.02) saturate(0.92);
+        }
+
+        .hotel-entry-image:hover {
+            box-shadow: 0 26px 50px rgba(72, 67, 45, 0.24);
+            transform: translateY(-5px) rotate(0deg);
+        }
+
+        .shape-orb {
+            filter: blur(20px);
+        }
+
+        .orb-1 {
+            background: rgba(216, 155, 88, 0.22);
+        }
+
+        .orb-2 {
+            background: rgba(74, 119, 91, 0.17);
+        }
+
+        .feature-card,
+        .experience-card,
+        .testimonial {
+            border-color: rgba(50, 68, 55, 0.13);
+            background: rgba(255, 250, 240, 0.82);
+            box-shadow: 0 12px 30px rgba(89, 70, 45, 0.08);
+        }
+
+        .feature-card:nth-child(2) {
+            border-radius: 8px 28px 8px 28px;
+        }
+
+        .feature-card:nth-child(3) {
+            border-radius: 28px 8px 28px 8px;
+        }
+
+        .feature-card:hover,
+        .experience-card:hover,
+        .testimonial:hover {
+            border-color: rgba(184, 94, 69, 0.38);
+        }
+
+        .feature-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 50% 44% 52% 46%;
+            background: #e8ddc4;
+            color: var(--accent-soft);
+        }
+
+        .menu-source-card {
+            border-color: var(--border);
+            border-radius: 8px 30px 8px 30px;
+            background:
+                radial-gradient(circle at 10% 0, rgba(216, 155, 88, 0.15), transparent 42%),
+                rgba(255, 250, 240, 0.76);
+        }
+
+        .menu-source-facts > div {
+            background: var(--surface);
+        }
+
+        .menu-source-facts strong,
+        .menu-scroll-hint,
+        .menu-category-chevron,
+        .menu-item-price {
+            color: var(--accent);
+        }
+
+        .menu-source-facts span {
+            color: var(--muted);
+        }
+
+        .menu-search,
+        .menu-diet-filters button,
+        .menu-category-nav a,
+        .menu-category-summary,
+        .menu-item-card {
+            border-color: var(--border);
+            background: var(--surface);
+            color: var(--text);
+        }
+
+        .menu-category-nav {
+            background: rgba(245, 239, 226, 0.94);
+        }
+
+        .menu-diet-filters button[aria-pressed="true"],
+        .menu-category-nav a:hover {
+            border-color: var(--accent);
+            background: rgba(184, 94, 69, 0.1);
+            color: var(--accent);
+        }
+
+        .menu-category-summary:hover {
+            border-color: var(--accent-secondary);
+        }
+
+        .menu-item-card {
+            border-radius: 8px 18px 8px 18px;
+            box-shadow: 0 5px 14px rgba(89, 70, 45, 0.05);
+        }
+
+        .menu-item-card p,
+        .menu-diet,
+        .menu-price-unavailable,
+        .menu-results {
+            color: var(--muted);
+        }
+
+        .menu-add-button {
+            border-color: rgba(49, 91, 75, 0.2);
+            background: rgba(49, 91, 75, 0.08);
+            color: var(--accent-soft);
+        }
+
+        .menu-add-button:hover {
+            border-color: var(--accent-soft);
+            background: rgba(49, 91, 75, 0.14);
+        }
+
+        .menu-diet[data-diet="veg"]::before {
+            border-color: #397652;
+            background: #397652;
+        }
+
+        .menu-diet[data-diet="non-veg"]::before {
+            border-color: #a84d42;
+            background: #a84d42;
+        }
+
+        .food-gallery-item {
+            border-color: var(--border);
+            border-radius: 8px 22px 8px 22px;
+            background: var(--surface);
+            box-shadow: 0 10px 24px rgba(89, 70, 45, 0.09);
+        }
+
+        .food-gallery-item:nth-child(3n + 2) {
+            border-radius: 22px 8px 22px 8px;
+        }
+
+        .food-gallery-item figcaption {
+            color: var(--text);
+        }
+
+        .image-stack {
+            border-color: rgba(50, 68, 55, 0.12);
+            border-radius: 12px 34px 12px 34px;
+            background: #e8ddc4;
+        }
+
+        .image-stack img {
+            border-radius: 8px 24px 8px 24px;
+            filter: brightness(0.98) contrast(1.02) saturate(0.92);
+        }
+
+        .mini-tag {
+            border-color: rgba(50, 68, 55, 0.12);
+            background: var(--surface);
+            color: var(--accent-soft);
+            font-family: 'Caveat', cursive;
+            font-size: 1.3rem;
+            letter-spacing: 0.02em;
+            text-transform: none;
+        }
+
+        .story-list li span {
+            background: #e8ddc4;
+            color: var(--accent-soft);
+        }
+
+        .experience-card strong,
+        .experience-card .meta {
+            color: var(--accent);
+        }
+
+        .experience-card .meta {
+            border-top-color: var(--border);
+        }
+
+        .review-map {
+            border-color: var(--border);
+        }
+
+        .reservation-shell {
+            border-color: var(--border);
+            border-radius: 10px 30px 10px 30px;
+            background: rgba(255, 250, 240, 0.68);
+            box-shadow: 0 16px 38px rgba(89, 70, 45, 0.09);
+        }
+
+        .info-card {
+            border-color: rgba(49, 91, 75, 0.16);
+            background: #e9e4d3;
+        }
+
+        .info-card .meta {
+            border-bottom-color: rgba(50, 68, 55, 0.15);
+        }
+
+        .info-card a:not(.map-link),
+        .map-link,
+        .site-footer a {
+            color: var(--accent-soft);
+        }
+
+        .booking-field input,
+        .booking-field select,
+        .booking-field textarea,
+        .booking-lookup-form input {
+            border-color: var(--border);
+            background: #fffdf8;
+            color: var(--text);
+        }
+
+        .booking-availability {
+            border-color: rgba(57, 118, 82, 0.3);
+            background: rgba(57, 118, 82, 0.08);
+        }
+
+        .booking-availability[data-state="limited"] {
+            border-color: rgba(184, 121, 45, 0.38);
+            background: rgba(216, 155, 88, 0.12);
+        }
+
+        .booking-availability[data-state="closed"] {
+            border-color: rgba(168, 77, 66, 0.38);
+            background: rgba(168, 77, 66, 0.08);
+        }
+
+        .booking-confirmation {
+            border-color: rgba(57, 118, 82, 0.3);
+            background: #edf2e7;
+        }
+
+        .booking-code {
+            color: var(--accent-soft);
+        }
+
+        .booking-summary-grid div,
+        .booking-lookup-result {
+            background: rgba(49, 91, 75, 0.07);
+        }
+
+        .booking-manage {
+            border-top-color: var(--border);
+        }
+
+        .site-footer {
+            border-top-color: var(--border);
+        }
+
+        .cart-panel {
+            border-color: var(--border);
+        }
+
+        .cart-line {
+            border-color: var(--border);
+        }
+
+        .cart-line-controls button {
+            border-color: var(--border);
+            color: var(--text);
+        }
+
+        .cart-subtotal {
+            border-top-color: var(--border);
+        }
+
+        .scroll-progress {
+            background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
+        }
+
+        html[data-theme="dark"] body {
+            background:
+                radial-gradient(ellipse at 8% 4%, rgba(216, 155, 88, 0.1), transparent 28%),
+                radial-gradient(ellipse at 88% 34%, rgba(74, 119, 91, 0.12), transparent 30%),
+                repeating-linear-gradient(0deg, rgba(235, 220, 190, 0.015) 0, rgba(235, 220, 190, 0.015) 1px, transparent 1px, transparent 5px),
+                var(--bg);
+        }
+
+        html[data-theme="dark"] .site-header {
+            background: rgba(16, 28, 32, 0.94);
+            border-bottom-color: var(--border);
+        }
+
+        html[data-theme="dark"] .feature-card,
+        html[data-theme="dark"] .experience-card,
+        html[data-theme="dark"] .testimonial {
+            border-color: var(--border);
+            background: rgba(25, 40, 43, 0.9);
+            box-shadow: var(--shadow);
+        }
+
+        html[data-theme="dark"] .feature-icon,
+        html[data-theme="dark"] .story-list li > span {
+            background: #2b3b36;
+            color: var(--accent-soft);
+        }
+
+        html[data-theme="dark"] .menu-source-card {
+            background:
+                radial-gradient(circle at 10% 0, rgba(216, 155, 88, 0.1), transparent 42%),
+                rgba(25, 40, 43, 0.88);
+        }
+
+        html[data-theme="dark"] .menu-category-nav {
+            background: rgba(16, 28, 32, 0.94);
+        }
+
+        html[data-theme="dark"] .menu-diet-filters button[aria-pressed="true"],
+        html[data-theme="dark"] .menu-category-nav a:hover {
+            background: rgba(225, 138, 104, 0.16);
+        }
+
+        html[data-theme="dark"] .menu-item-card {
+            box-shadow: 0 5px 14px rgba(0, 0, 0, 0.14);
+        }
+
+        html[data-theme="dark"] .menu-add-button {
+            border-color: rgba(180, 208, 180, 0.24);
+            background: rgba(180, 208, 180, 0.1);
+            color: var(--accent-soft);
+        }
+
+        html[data-theme="dark"] .food-gallery-item {
+            box-shadow: var(--shadow);
+        }
+
+        html[data-theme="dark"] .image-stack {
+            border-color: var(--border);
+            background: #293a35;
+        }
+
+        html[data-theme="dark"] .reservation-shell {
+            background: rgba(25, 40, 43, 0.76);
+            box-shadow: var(--shadow);
+        }
+
+        html[data-theme="dark"] .info-card {
+            border-color: var(--border);
+            background: #243735;
+        }
+
+        html[data-theme="dark"] .booking-field input,
+        html[data-theme="dark"] .booking-field select,
+        html[data-theme="dark"] .booking-field textarea,
+        html[data-theme="dark"] .booking-lookup-form input {
+            background: #142326;
+        }
+
+        html[data-theme="dark"] .booking-availability {
+            border-color: rgba(145, 201, 155, 0.32);
+            background: rgba(145, 201, 155, 0.1);
+        }
+
+        html[data-theme="dark"] .booking-availability[data-state="limited"] {
+            border-color: rgba(210, 162, 103, 0.42);
+            background: rgba(210, 162, 103, 0.12);
+        }
+
+        html[data-theme="dark"] .booking-availability[data-state="closed"] {
+            border-color: rgba(238, 154, 135, 0.45);
+            background: rgba(238, 154, 135, 0.1);
+        }
+
+        html[data-theme="dark"] .booking-confirmation {
+            border-color: rgba(145, 201, 155, 0.32);
+            background: #20342e;
+        }
+
+        html[data-theme="dark"] .booking-summary-grid div,
+        html[data-theme="dark"] .booking-lookup-result {
+            background: rgba(180, 208, 180, 0.09);
+        }
+
+        :focus-visible {
+            outline-color: var(--accent);
+        }
+
+        @media (max-width: 960px) {
+            .nav-links {
+                border-color: var(--border);
+                border-radius: 8px 20px 8px 20px;
+                background: var(--surface-elevated);
+                box-shadow: var(--shadow);
+            }
+
+            .nav-links a {
+                color: var(--text);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                padding-top: 54px;
+            }
+
+            .hero-visual {
+                min-height: 0;
+            }
+
+            .hotel-entry-image {
+                width: min(100%, 390px);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .shape-orb {
+                animation: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1832,12 +2672,16 @@
         <div class="container nav">
             <a href="#home" class="logo">
                 <img src="images/logo/rua-beach-cafe-logo.jpeg" alt="" class="logo-mark" width="38" height="38">
-                Rua Beach Cafe
+                <span data-content-name>Rua Beach Cafe</span>
             </a>
 
             <button class="cart-toggle" type="button" aria-label="Open cart, 0 items" aria-controls="cart-drawer" aria-expanded="false">
                 <span aria-hidden="true">Cart</span>
                 <span class="cart-count" aria-hidden="true">0</span>
+            </button>
+            <button class="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false">
+                <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+                <span class="theme-toggle-label">Dark</span>
             </button>
             <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-controls="primary-navigation" aria-expanded="false">☰</button>
 
@@ -1848,9 +2692,9 @@
                 <a href="#reviews">Reviews</a>
                 <a href="#reservation">Reservations</a>
                 <a href="#contact">Contact</a>
-                <a href="https://www.district.in/dining/mumbai/rua-beach-cafe-gorai" class="nav-cta" target="_blank" rel="noopener noreferrer">Book a Table <span class="sr-only">(opens in a new tab)</span></a>
+                <a href="#reservation" class="nav-cta" data-open-booking>Reserve a Table</a>
             </nav>
-            <a class="header-call" href="tel:+917738084845" aria-label="Call Rua Beach Cafe">Call</a>
+            <a class="header-call" href="tel:+917738084845" data-content-phone-link aria-label="Call Rua Beach Cafe">Call</a>
         </div>
     </header>
 
@@ -1861,15 +2705,15 @@
 
             <div class="container hero-grid">
                 <div class="hero-copy reveal">
-                    <p class="eyebrow">Beachfront Cafe • Gorai, Mumbai</p>
-                    <h1>Beachside dining in Gorai.</h1>
-                    <p class="lead">Find Rua Beach Cafe on Gorai Beach. Check today's listing details, read guest feedback on the original platforms, or book directly through District.</p>
+                    <p class="eyebrow" data-content-tagline>Beachfront Cafe • Gorai, Mumbai</p>
+                    <h1 data-content-hero-title>Beachside dining in Gorai.</h1>
+                    <p class="lead" data-content-description>Find Rua Beach Cafe on Gorai Beach. Check today's listing details, read guest feedback on the original platforms, or reserve a table with the booking engine.</p>
 
                     <div class="hero-actions">
                         <a href="#menu" class="primary-btn">Explore Menu</a>
-                        <a href="https://www.district.in/dining/mumbai/rua-beach-cafe-gorai" class="secondary-btn" target="_blank" rel="noopener noreferrer">Book on District <span class="sr-only">(opens in a new tab)</span></a>
-                        <a href="tel:+917738084845" class="secondary-btn">Call</a>
-                        <a href="https://www.google.com/maps/place/Rua+Beach+Cafe/@19.2452037,72.7815783,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7b3b9e6fca12d:0xb426a31d81e4cc55!8m2!3d19.2452037!4d72.7815783!16s%2Fg%2F11yb680x0v" class="secondary-btn" target="_blank" rel="noopener noreferrer">Get directions <span class="sr-only">(opens in a new tab)</span></a>
+                        <a href="#reservation" class="secondary-btn" data-open-booking>Reserve a Table</a>
+                        <a href="tel:+917738084845" data-content-phone-link class="secondary-btn">Call</a>
+                        <a href="https://www.google.com/maps/place/Rua+Beach+Cafe/@19.2452037,72.7815783,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7b3b9e6fca12d:0xb426a31d81e4cc55!8m2!3d19.2452037!4d72.7815783!16s%2Fg%2F11yb680x0v" data-content-maps-link class="secondary-btn" target="_blank" rel="noopener noreferrer">Get directions <span class="sr-only">(opens in a new tab)</span></a>
                     </div>
 
                     <div class="stats">
@@ -1898,19 +2742,19 @@
                     <article class="feature-card">
                         <div class="feature-icon" aria-hidden="true">🌊</div>
                         <h3>Beachfront Address</h3>
-                        <p>Rua Beach Cafe is listed at Sadhguru Bungalow, Beach Front, Gorai, Mumbai 400091.</p>
+                        <p data-content-address>Rua Beach Cafe is listed at Sadhguru Bungalow, Beach Front, Gorai, Mumbai 400091.</p>
                     </article>
 
                     <article class="feature-card">
                         <div class="feature-icon" aria-hidden="true">🥘</div>
                         <h3>Listed Cuisines</h3>
-                        <p>District currently lists North Indian, Italian, and Indo-Chinese cuisine. Check its live menu for current dishes and availability.</p>
+                        <p data-content-cuisines>District currently lists North Indian, Italian, and Indo-Chinese cuisine. Check its live menu for current dishes and availability.</p>
                     </article>
 
                     <article class="feature-card">
                         <div class="feature-icon" aria-hidden="true">☕</div>
                         <h3>Hours & Contact</h3>
-                        <p>Listed hours are daily, 12:00 PM–1:30 AM. Hours can change; call ahead to confirm before travelling.</p>
+                        <p data-content-hours>Listed hours are daily, 12:00 PM–1:30 AM. Hours can change; call ahead to confirm before travelling.</p>
                     </article>
                 </div>
             </div>
@@ -1924,8 +2768,8 @@
                         <h2>Browse the menu by craving.</h2>
                         <p>Prices and dish names below are transcribed from the local food and bar menu pages. Menus can change; please call to confirm current availability, prices, ingredients, and allergens.</p>
                         <div class="menu-source-actions">
-                            <a href="https://www.district.in/dining/mumbai/rua-beach-cafe-gorai" class="primary-btn" target="_blank" rel="noopener noreferrer">Check current listing on District <span class="sr-only">(opens in a new tab)</span></a>
-                            <a href="tel:+917738084845" class="secondary-btn">Call to ask about the menu</a>
+                            <a href="https://www.district.in/dining/mumbai/rua-beach-cafe-gorai" data-content-district-link class="primary-btn" target="_blank" rel="noopener noreferrer">Check current listing on District <span class="sr-only">(opens in a new tab)</span></a>
+                            <a href="tel:+917738084845" data-content-phone-link class="secondary-btn">Call to ask about the menu</a>
                         </div>
                     </div>
                     <div class="menu-source-facts">
@@ -1972,7 +2816,7 @@
                     <h2>A taste of what's on the table.</h2>
                     <p>Browse photos from the local cafe image collection. They show examples of dishes and drinks, not a live menu; current items and availability are listed on District.</p>
                 </div>
-                <div class="food-gallery reveal" aria-label="Food and drink photographs from Rua Beach Cafe">
+                <div class="food-gallery reveal" data-content-gallery="food" aria-label="Food and drink photographs from Rua Beach Cafe">
                     <figure class="food-gallery-item">
                         <img loading="lazy" decoding="async" src="images/restaurant/cafe-entrance-sign.jpg" alt="Rua Beach Cafe sign inside the entrance area" width="141" height="176">
                         <figcaption>Rua Beach Cafe sign inside the entrance area</figcaption>
@@ -2000,8 +2844,8 @@
                 </div>
                 <p class="food-gallery-note">Photographs are illustrative and do not confirm that a dish is currently available. See the current District menu and guest-uploaded Google Maps photos. Please confirm photo publishing rights before deployment.</p>
                 <div class="food-gallery-links">
-                    <a href="https://www.district.in/dining/mumbai/rua-beach-cafe-gorai" class="primary-btn" target="_blank" rel="noopener noreferrer">Explore the District menu photos <span class="sr-only">(opens in a new tab)</span></a>
-                    <a href="https://www.google.com/maps/place/Rua+Beach+Cafe/@19.2452037,72.7815783,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7b3b9e6fca12d:0xb426a31d81e4cc55!8m2!3d19.2452037!4d72.7815783!16s%2Fg%2F11yb680x0v" class="secondary-btn" target="_blank" rel="noopener noreferrer">See more Google Maps photos <span class="sr-only">(opens in a new tab)</span></a>
+                    <a href="https://www.district.in/dining/mumbai/rua-beach-cafe-gorai" data-content-district-link class="primary-btn" target="_blank" rel="noopener noreferrer">Explore the District menu photos <span class="sr-only">(opens in a new tab)</span></a>
+                    <a href="https://www.google.com/maps/place/Rua+Beach+Cafe/@19.2452037,72.7815783,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7b3b9e6fca12d:0xb426a31d81e4cc55!8m2!3d19.2452037!4d72.7815783!16s%2Fg%2F11yb680x0v" data-content-maps-link class="secondary-btn" target="_blank" rel="noopener noreferrer">See more Google Maps photos <span class="sr-only">(opens in a new tab)</span></a>
                 </div>
             </div>
         </section>
@@ -2015,12 +2859,12 @@
 
                 <div>
                     <p class="eyebrow">Our Story</p>
-                    <h2>Visit Rua Beach Cafe in Gorai.</h2>
-                    <p>Rua Beach Cafe is listed in Gorai, Mumbai. For current menus, guest ratings, and reservation availability, follow the live listing links on this page.</p>
+                    <h2 data-content-about-title>Visit Rua Beach Cafe in Gorai.</h2>
+                    <p data-content-about>Rua Beach Cafe is listed in Gorai, Mumbai. For current menus, guest ratings, and reservation availability, follow the live listing links on this page.</p>
 
                     <ul class="story-list">
-                        <li><span>1</span> <div><strong>Find the cafe</strong><br>Sadhguru Bungalow, Beach Front, Gorai, Mumbai 400091.</div></li>
-                        <li><span>2</span> <div><strong>Check opening hours</strong><br>Listed daily hours are 12:00 PM–1:30 AM. Call to confirm before visiting.</div></li>
+                        <li><span>1</span> <div><strong>Find the cafe</strong><br><span data-content-address>Sadhguru Bungalow, Beach Front, Gorai, Mumbai 400091.</span></div></li>
+                        <li><span>2</span> <div><strong>Check opening hours</strong><br><span data-content-hours>Listed daily hours are 12:00 PM–1:30 AM. Call to confirm before visiting.</span></div></li>
                         <li><span>3</span> <div><strong>Reserve directly</strong><br>Use District for reservations or call the restaurant.</div></li>
                     </ul>
                 </div>
@@ -2063,16 +2907,16 @@
                 <div class="experience-grid reveal">
                     <article class="experience-card">
                         <strong>Listed cuisines</strong>
-                        <h3>North Indian · Italian · Indo-Chinese</h3>
+                        <h3 data-content-cuisine-list>North Indian · Italian · Indo-Chinese</h3>
                         <p>These are the cuisine labels shown on District when checked. Menus and availability can change.</p>
                         <div class="meta"><span>Source</span><span>District</span></div>
                     </article>
 
                     <article class="experience-card">
                         <strong>Hours</strong>
-                        <h3>Daily · 12 PM–1:30 AM</h3>
+                        <h3 data-content-hours-short>Daily · 12 PM–1:30 AM</h3>
                         <p>Opening hours listed on the cafe's public listings. Call ahead to verify today's hours.</p>
-                        <div class="meta"><span>Contact</span><span>+91 7738084845</span></div>
+                        <div class="meta"><span>Contact</span><span data-content-phone-text>+91 7738084845</span></div>
                     </article>
                 </div>
             </div>
@@ -2093,14 +2937,14 @@
                         <p class="eyebrow">Google Maps</p>
                         <h3>4.2 / 5 · 865 reviews</h3>
                         <p>See the latest rating, guest feedback, directions, and photos on Google Maps.</p>
-                        <a href="https://www.google.com/maps/place/Rua+Beach+Cafe/@19.2452037,72.7815783,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7b3b9e6fca12d:0xb426a31d81e4cc55!8m2!3d19.2452037!4d72.7815783!16s%2Fg%2F11yb680x0v" class="secondary-btn" target="_blank" rel="noopener noreferrer">Read Google reviews and view photos <span class="sr-only">(opens in a new tab)</span></a>
+                        <a href="https://www.google.com/maps/place/Rua+Beach+Cafe/@19.2452037,72.7815783,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7b3b9e6fca12d:0xb426a31d81e4cc55!8m2!3d19.2452037!4d72.7815783!16s%2Fg%2F11yb680x0v" data-content-google-link class="secondary-btn" target="_blank" rel="noopener noreferrer">Read Google reviews and view photos <span class="sr-only">(opens in a new tab)</span></a>
                     </article>
 
                     <article class="testimonial">
                         <p class="eyebrow">District</p>
                         <h3>4.2 / 5 · 1,081 ratings</h3>
                         <p>District currently shows 85 written reviews. Ratings and counts can change.</p>
-                        <a href="https://www.district.in/dining/mumbai/rua-beach-cafe-gorai" class="secondary-btn" target="_blank" rel="noopener noreferrer">Read District reviews and view menu <span class="sr-only">(opens in a new tab)</span></a>
+                        <a href="https://www.district.in/dining/mumbai/rua-beach-cafe-gorai" data-content-district-link class="secondary-btn" target="_blank" rel="noopener noreferrer">Read District reviews and view menu <span class="sr-only">(opens in a new tab)</span></a>
                     </article>
 
                 </div>
@@ -2121,31 +2965,147 @@
 
         <section class="reservation section" id="reservation">
             <div class="container reservation-shell reveal">
-                <div>
-                    <p class="eyebrow">Book Your Table</p>
-                    <h2>Reserve your dining experience.</h2>
-                    <p>Reservations are handled by District. Book online or call Rua Beach Cafe directly if you prefer to speak with the restaurant.</p>
-                    <div class="reservation-actions">
-                        <a href="https://www.district.in/dining/mumbai/rua-beach-cafe-gorai" target="_blank" rel="noopener noreferrer" class="primary-btn">Book on District <span class="sr-only">(opens in a new tab)</span></a>
-                        <a href="tel:+917738084845" class="secondary-btn">Call the restaurant</a>
-                        <a href="https://www.google.com/maps/place/Rua+Beach+Cafe/@19.2452037,72.7815783,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7b3b9e6fca12d:0xb426a31d81e4cc55!8m2!3d19.2452037!4d72.7815783!16s%2Fg%2F11yb680x0v" class="secondary-btn" target="_blank" rel="noopener noreferrer">Get directions <span class="sr-only">(opens in a new tab)</span></a>
+                <div class="booking-panel">
+                    <div>
+                        <p class="eyebrow">Central Reservation System / Booking Engine</p>
+                        <h2>Reserve your dining experience.</h2>
+                        <p>Choose a date, time, and party size. On the deployed site, live capacity is checked, the reservation is stored centrally, and confirmation emails are sent to the cafe and guest.</p>
                     </div>
-                    <p class="reservation-note">This website links to District for the current menu and reservations. To order by phone, call the cafe directly; this website does not take orders or payments.</p>
+
+                    <!-- ponytail: file:// preview uses localStorage; deployed builds use /api/reservations for shared inventory and email. -->
+                    <form class="booking-form" id="booking-form">
+                        <div class="booking-fields">
+                            <div class="booking-field">
+                                <label for="booking-date">Date</label>
+                                <input id="booking-date" name="date" type="date" required>
+                            </div>
+                            <div class="booking-field">
+                                <label for="booking-time">Time</label>
+                                <select id="booking-time" name="time" required></select>
+                            </div>
+                            <div class="booking-field">
+                                <label for="booking-guests">Guests</label>
+                                <select id="booking-guests" name="guests" required>
+                                    <option value="1">1 guest</option>
+                                    <option value="2" selected>2 guests</option>
+                                    <option value="3">3 guests</option>
+                                    <option value="4">4 guests</option>
+                                    <option value="5">5 guests</option>
+                                    <option value="6">6 guests</option>
+                                    <option value="7">7 guests</option>
+                                    <option value="8">8 guests</option>
+                                    <option value="9">9 guests</option>
+                                    <option value="10">10 guests</option>
+                                    <option value="11">11 guests</option>
+                                    <option value="12">12 guests</option>
+                                </select>
+                            </div>
+                            <div class="booking-field">
+                                <label for="booking-occasion">Occasion <span class="booking-helper">(optional)</span></label>
+                                <select id="booking-occasion" name="occasion">
+                                    <option value="">No special occasion</option>
+                                    <option>Birthday</option>
+                                    <option>Anniversary</option>
+                                    <option>Business meal</option>
+                                    <option>Family gathering</option>
+                                </select>
+                            </div>
+                            <div class="booking-field">
+                                <label for="booking-name">Full name</label>
+                                <input id="booking-name" name="name" type="text" autocomplete="name" minlength="2" maxlength="60" required>
+                            </div>
+                            <div class="booking-field">
+                                <label for="booking-phone">Mobile number</label>
+                                <input id="booking-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" pattern="[+]?[0-9 ()-]{8,20}" maxlength="20" required>
+                            </div>
+                            <div class="booking-field">
+                                <label for="booking-email">Email <span class="booking-helper">(optional)</span></label>
+                                <input id="booking-email" name="email" type="email" autocomplete="email" maxlength="120">
+                            </div>
+                            <div class="booking-field full">
+                                <label for="booking-notes">Special request <span class="booking-helper">(optional, 400 characters)</span></label>
+                                <textarea id="booking-notes" name="notes" maxlength="400" placeholder="Window seat, accessibility need, or dietary note"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="booking-honeypot" aria-hidden="true">
+                            <label for="booking-website">Website</label>
+                            <input id="booking-website" name="website" type="text" tabindex="-1" autocomplete="off">
+                        </div>
+
+                        <div class="booking-availability" id="booking-availability" data-state="available" role="status" aria-live="polite">
+                            <strong id="booking-availability-title">Select a date and time</strong>
+                            <span id="booking-availability-copy">Live local availability updates here.</span>
+                        </div>
+
+                        <label class="booking-consent" for="booking-consent">
+                            <input id="booking-consent" name="consent" type="checkbox" required>
+                            <span data-content-consent>I agree that Rua Beach Cafe can use these details to handle this table reservation.</span>
+                        </label>
+
+                        <div class="booking-submit-row">
+                            <button class="primary-btn" type="submit">Confirm reservation</button>
+                            <span class="booking-form-status" id="booking-form-status" role="status" aria-live="polite"></span>
+                        </div>
+                        <p class="booking-privacy" id="booking-backend-note">Connecting to live booking server...</p>
+                    </form>
+
+                    <div class="booking-confirmation" id="booking-confirmation" hidden>
+                        <div>
+                            <p class="eyebrow">Reservation confirmed</p>
+                            <h3>Reservation confirmed.</h3>
+                            <p id="booking-confirmation-copy">Save this confirmation code for lookup, changes, or cancellation. Call the cafe for final confirmation or changes.</p>
+                        </div>
+                        <div class="booking-code" id="booking-confirmation-code"></div>
+                        <div class="booking-summary-grid">
+                            <div><strong>Date</strong><span id="booking-confirmation-date"></span></div>
+                            <div><strong>Time</strong><span id="booking-confirmation-time"></span></div>
+                            <div><strong>Guests</strong><span id="booking-confirmation-guests"></span></div>
+                            <div><strong>Guest</strong><span id="booking-confirmation-name"></span></div>
+                        </div>
+                        <div class="booking-actions">
+                            <button class="primary-btn" type="button" data-booking-calendar>Add to calendar</button>
+                            <a class="secondary-btn" id="booking-confirmation-whatsapp" href="https://wa.me/" target="_blank" rel="noopener noreferrer">Share on WhatsApp</a>
+                            <button class="secondary-btn" type="button" data-booking-new>Book another table</button>
+                        </div>
+                    </div>
+
+                    <div class="booking-manage">
+                        <div>
+                            <p class="eyebrow">Manage booking</p>
+                            <h3>Find an existing reservation.</h3>
+                        </div>
+                        <form class="booking-lookup-form" id="booking-lookup-form">
+                            <label class="sr-only" for="booking-lookup-code">Confirmation code</label>
+                            <input id="booking-lookup-code" name="code" type="text" inputmode="text" autocomplete="off" maxlength="32" placeholder="Confirmation code" required>
+                            <label class="sr-only" for="booking-lookup-phone">Mobile number</label>
+                            <input id="booking-lookup-phone" name="phone" type="tel" inputmode="tel" maxlength="20" placeholder="Mobile number" required>
+                            <button class="secondary-btn" type="submit">Find booking</button>
+                        </form>
+                        <div class="booking-lookup-result" id="booking-lookup-result" hidden role="status" aria-live="polite">
+                            <strong id="booking-lookup-title"></strong>
+                            <span id="booking-lookup-copy"></span>
+                            <button class="secondary-btn" type="button" data-booking-cancel>Cancel this reservation</button>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="info-card">
                     <div class="meta">
                         <strong>Open Hours</strong>
-                        <span>Daily, 12:00 PM - 1:30 AM</span>
+                        <span data-content-hours>Daily, 12:00 PM - 1:30 AM</span>
                     </div>
-
+                    <div class="meta">
+                        <strong>Availability</strong>
+                        <span>12:00 PM - 1:00 AM<br>30-minute table slots</span>
+                    </div>
                     <div class="meta">
                         <strong>Location</strong>
-                        <span>Sadhguru Bungalow, Beach Front, Gorai, Mumbai 400091<br><a class="map-link" href="https://www.google.com/maps/place/Rua+Beach+Cafe/@19.2452037,72.7815783,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7b3b9e6fca12d:0xb426a31d81e4cc55!8m2!3d19.2452037!4d72.7815783!16s%2Fg%2F11yb680x0v" target="_blank" rel="noopener noreferrer">Get directions <span class="sr-only">(opens in a new tab)</span></a></span>
+                        <span data-content-address>Sadhguru Bungalow, Beach Front, Gorai, Mumbai 400091<br><a class="map-link" data-content-maps-link href="https://www.google.com/maps/place/Rua+Beach+Cafe/@19.2452037,72.7815783,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7b3b9e6fca12d:0xb426a31d81e4cc55!8m2!3d19.2452037!4d72.7815783!16s%2Fg%2F11yb680x0v" target="_blank" rel="noopener noreferrer">Get directions <span class="sr-only">(opens in a new tab)</span></a></span>
                     </div>
                     <div class="meta">
-                        <strong>Contact</strong>
-                        <span><a href="tel:+917738084845">+91 7738084845</a></span>
+                        <strong>Need help?</strong>
+                        <span><a href="tel:+917738084845" data-content-phone-link data-content-phone-text>+91 7738084845</a><br><a href="https://www.district.in/dining/mumbai/rua-beach-cafe-gorai" data-content-district-link target="_blank" rel="noopener noreferrer">Open District fallback</a></span>
                     </div>
                 </div>
             </div>
@@ -2155,13 +3115,18 @@
     <footer class="site-footer" id="contact">
         <div class="container footer-inner">
             <div>
-                <div class="logo">
+                <a href="#home" class="logo" aria-label="Rua Beach Cafe home">
                     <img loading="lazy" src="images/logo/rua-beach-cafe-logo.jpeg" alt="" class="logo-mark" width="38" height="38">
-                    Rua Beach Cafe
-                </div>
+                    <span data-content-name>Rua Beach Cafe</span>
+                </a>
             </div>
-            <div><a href="tel:+917738084845">+91 7738084845</a> · Gorai, Mumbai 400091</div>
-            <div>© <span id="current-year">2026</span> Rua Beach Cafe</div>
+            <div><a href="tel:+917738084845" data-content-phone-link data-content-phone-text>+91 7738084845</a> · <span data-content-footer-address>Gorai, Mumbai 400091</span></div>
+            <div><a href="" data-content-email-link hidden></a></div>
+            <div class="footer-social" aria-label="Social links">
+                <a href="" data-content-instagram-link hidden target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="" data-content-facebook-link hidden target="_blank" rel="noopener noreferrer">Facebook</a>
+            </div>
+            <div>© <span id="current-year">2026</span> <span data-content-name>Rua Beach Cafe</span></div>
         </div>
     </footer>
 
@@ -2191,7 +3156,7 @@
             </div>
             <p class="cart-note">Call to confirm availability and the final bill. This website does not submit orders or accept online payment.</p>
             <div class="cart-actions">
-                <a class="primary-btn" data-cart-call href="tel:+917738084845" hidden>Call to order</a>
+                <a class="primary-btn" data-cart-call data-content-phone-link href="tel:+917738084845" hidden>Call to order</a>
                 <button class="secondary-btn" type="button" data-cart-copy hidden>Copy order summary</button>
                 <a class="secondary-btn" data-cart-whatsapp href="https://wa.me/" target="_blank" rel="noopener noreferrer" hidden>Share on WhatsApp</a>
                 <button class="cart-clear" type="button" data-cart-clear disabled>Clear cart</button>
@@ -2203,11 +3168,11 @@
     <a class="back-to-top" href="#home" aria-label="Back to top">↑</a>
     <noscript>
         <style>.nav-toggle { display: none !important; }</style>
-        <p class="reservation-note">The booking, menu, phone, maps, and review links work without JavaScript. The image viewer requires JavaScript.</p>
+        <p class="reservation-note">District, phone, maps, menu, and review links work without JavaScript. The local booking engine, cart, filters, and image viewer require JavaScript.</p>
     </noscript>
 
     <script>
-        const menuCategories = [
+        let menuCategories = [
             { id: 'chaat-snacks', label: 'Chaat & snacks' },
             { id: 'pizza', label: 'Pizza' },
             { id: 'soups-salads', label: 'Soups, salads & sides' },
@@ -2221,8 +3186,8 @@
             { id: 'beverages', label: 'Beverages' }
         ];
 
-        // TODO: replace with the real menu from the manager.
-        const menuItems = [
+        // Built-in fallback; owner can edit published menu in admin.html.
+        let menuItems = [
             { category: 'chaat-snacks', name: "Rua's Chana Koliwada Special", price: '₹249', diet: 'ask', detail: 'Ask the cafe to confirm the ingredients and dietary type.' },
             { category: 'chaat-snacks', name: 'Boiled Corn and Cheese', price: '₹229', diet: 'veg' },
             { category: 'chaat-snacks', name: 'Sweet Potato Chaat', price: '₹229', diet: 'veg' },
@@ -2422,7 +3387,7 @@
                 : null
         }));
 
-        const menuScanPages = Array.from({ length: 11 }, (_, index) => {
+        let menuScanPages = Array.from({ length: 11 }, (_, index) => {
             const pageNumber = String(index + 1).padStart(2, '0');
             return [
                 { src: `images/food-menu/food-menu-${pageNumber}.webp`, title: `Food menu page ${index + 1}`, group: 'food' },
@@ -2436,6 +3401,8 @@
 
             const navToggle = document.querySelector('.nav-toggle');
             const navLinks = document.querySelector('.nav-links');
+            const themeToggle = document.querySelector('.theme-toggle');
+            const themeStorageKey = 'rua-beach-cafe-theme-v1';
             const lightbox = document.querySelector('#image-lightbox');
             const lightboxImage = lightbox.querySelector('.lightbox-image');
             const lightboxCaption = lightbox.querySelector('.lightbox-caption');
@@ -2459,11 +3426,36 @@
             const cartClear = document.querySelector('[data-cart-clear]');
             const toast = document.querySelector('#site-toast');
             const cartStorageKey = 'rua-beach-cafe-cart-v1';
-            const knownMenuItems = new Map(menuItems.map(item => [item.id, item]));
+            let knownMenuItems = new Map(menuItems.map(item => [item.id, item]));
             let cartState = [];
             let cartStorageAvailable = true;
             let lastCartTrigger = null;
             let toastTimer = 0;
+            let menuHandlersBound = false;
+            let selectedMenuDiet = 'all';
+            let siteProfile = {
+                name: 'Rua Beach Cafe',
+                phone: '+91 7738084845',
+                address: 'Sadhguru Bungalow, Beach Front, Gorai, Mumbai 400091'
+            };
+
+            function applyTheme(theme) {
+                const isDark = theme === 'dark';
+                document.documentElement.dataset.theme = isDark ? 'dark' : 'light';
+                themeToggle.setAttribute('aria-pressed', String(isDark));
+                themeToggle.setAttribute('aria-label', `Switch to ${isDark ? 'light' : 'dark'} theme`);
+                themeToggle.querySelector('.theme-toggle-icon').textContent = isDark ? '☀' : '☾';
+                themeToggle.querySelector('.theme-toggle-label').textContent = isDark ? 'Light' : 'Dark';
+                document.querySelector('meta[name="theme-color"]').content = isDark ? '#101c20' : '#f5efe2';
+            }
+
+            try {
+                const savedTheme = window.localStorage.getItem(themeStorageKey);
+                applyTheme(savedTheme === 'dark' ? 'dark' : 'light');
+            } catch (error) {
+                console.warn('Theme preference could not be loaded; using the light theme.', error);
+                applyTheme('light');
+            }
 
             function addImageFallback(image) {
                 if (image.dataset.fallbackAdded === 'true') return;
@@ -2527,6 +3519,196 @@
                 }, 3200);
             }
 
+            function phoneHref(value) {
+                const digits = String(value || '').replace(/\D/g, '');
+                return digits ? `tel:+${digits}` : '';
+            }
+
+            function applySiteContent(site) {
+                if (!site || typeof site !== 'object') return;
+                siteProfile = {
+                    name: site.name || siteProfile.name,
+                    phone: site.phone || siteProfile.phone,
+                    address: site.address || siteProfile.address
+                };
+                const name = siteProfile.name;
+                document.querySelectorAll('[data-content-name]').forEach(element => {
+                    element.textContent = name;
+                });
+                document.querySelectorAll('.logo[aria-label]').forEach(element => {
+                    element.setAttribute('aria-label', `${name} home`);
+                });
+                document.querySelectorAll('[data-content-consent]').forEach(element => {
+                    element.textContent = `I agree that ${name} can use these details to handle this table reservation.`;
+                });
+                document.querySelectorAll('[data-content-tagline]').forEach(element => {
+                    if (site.tagline) element.textContent = site.tagline;
+                });
+                document.querySelectorAll('[data-content-hero-title]').forEach(element => {
+                    if (site.heroTitle) element.textContent = site.heroTitle;
+                });
+                document.querySelectorAll('[data-content-description]').forEach(element => {
+                    if (site.description) element.textContent = site.description;
+                });
+                document.querySelectorAll('[data-content-about-title]').forEach(element => {
+                    element.textContent = `${name} in Gorai.`;
+                });
+                document.querySelectorAll('[data-content-about]').forEach(element => {
+                    if (site.about) element.textContent = site.about;
+                });
+                document.querySelectorAll('[data-content-address]').forEach(element => {
+                    const textNode = Array.from(element.childNodes).find(node => node.nodeType === Node.TEXT_NODE);
+                    if (textNode) textNode.nodeValue = siteProfile.address;
+                    else element.textContent = siteProfile.address;
+                });
+                document.querySelectorAll('[data-content-footer-address]').forEach(element => {
+                    element.textContent = siteProfile.address;
+                });
+                document.querySelectorAll('[data-content-hours]').forEach(element => {
+                    if (site.hours) element.textContent = site.hours;
+                });
+                document.querySelectorAll('[data-content-hours-short]').forEach(element => {
+                    if (site.hours) element.textContent = site.hours.replace(/^Daily,?\s*/i, 'Daily · ');
+                });
+                const cuisines = Array.isArray(site.cuisines) ? site.cuisines.filter(Boolean) : [];
+                document.querySelectorAll('[data-content-cuisines]').forEach(element => {
+                    if (cuisines.length) element.textContent = `District currently lists ${cuisines.join(', ')}. Check its live menu for current dishes and availability.`;
+                });
+                document.querySelectorAll('[data-content-cuisine-list]').forEach(element => {
+                    if (cuisines.length) element.textContent = cuisines.join(' · ');
+                });
+                const phone = phoneHref(siteProfile.phone);
+                document.querySelectorAll('[data-content-phone-link]').forEach(element => {
+                    element.hidden = !phone;
+                    if (phone) element.href = phone;
+                    if (element.hasAttribute('aria-label')) element.setAttribute('aria-label', `Call ${name}`);
+                });
+                document.querySelectorAll('[data-content-phone-text]').forEach(element => {
+                    element.textContent = siteProfile.phone;
+                });
+                document.querySelectorAll('[data-content-email-link]').forEach(element => {
+                    element.hidden = !site.email;
+                    if (site.email) {
+                        element.href = `mailto:${site.email}`;
+                        element.textContent = site.email;
+                    }
+                });
+                document.querySelectorAll('[data-content-maps-link]').forEach(element => {
+                    const mapsUrl = site.mapsUrl || site.googleUrl;
+                    element.hidden = !mapsUrl;
+                    if (mapsUrl) element.href = mapsUrl;
+                });
+                document.querySelectorAll('[data-content-google-link]').forEach(element => {
+                    const googleUrl = site.googleUrl || site.mapsUrl;
+                    element.hidden = !googleUrl;
+                    if (googleUrl) element.href = googleUrl;
+                });
+                document.querySelectorAll('[data-content-district-link]').forEach(element => {
+                    element.hidden = !site.districtUrl;
+                    if (site.districtUrl) element.href = site.districtUrl;
+                });
+                document.querySelectorAll('[data-content-instagram-link]').forEach(element => {
+                    element.hidden = !site.instagramUrl;
+                    if (site.instagramUrl) element.href = site.instagramUrl;
+                });
+                document.querySelectorAll('[data-content-facebook-link]').forEach(element => {
+                    element.hidden = !site.facebookUrl;
+                    if (site.facebookUrl) element.href = site.facebookUrl;
+                });
+                document.title = `${name} | ${site.address || 'Gorai, Mumbai'}`;
+                const description = site.description || `Visit ${name}.`;
+                document.querySelector('meta[name="description"]')?.setAttribute('content', description);
+                document.querySelector('meta[property="og:site_name"]')?.setAttribute('content', name);
+                document.querySelector('meta[property="og:title"]')?.setAttribute('content', document.title);
+                document.querySelector('meta[property="og:description"]')?.setAttribute('content', description);
+                document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', document.title);
+                document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', description);
+                const jsonLd = document.querySelector('script[type="application/ld+json"]');
+                if (jsonLd) {
+                    try {
+                        const structuredData = JSON.parse(jsonLd.textContent);
+                        structuredData.name = name;
+                        structuredData.telephone = siteProfile.phone;
+                        structuredData.servesCuisine = cuisines;
+                        structuredData.address = {
+                            ...(structuredData.address || {}),
+                            streetAddress: siteProfile.address
+                        };
+                        jsonLd.textContent = JSON.stringify(structuredData);
+                    } catch (error) {
+                        console.warn('Could not update structured website data.', error);
+                    }
+                }
+            }
+
+            function normalizePublishedItem(item, index) {
+                const price = String(item.price || '').trim();
+                const unitPrice = Number.isInteger(item.unitPrice)
+                    ? item.unitPrice
+                    : /^₹[\d,]+$/.test(price) ? Number(price.replace(/\D/g, '')) : null;
+                return {
+                    id: String(item.id || `rua-menu-${index + 1}`),
+                    category: String(item.category || ''),
+                    name: String(item.name || '').trim(),
+                    price,
+                    diet: ['veg', 'non-veg', 'ask'].includes(item.diet) ? item.diet : 'ask',
+                    description: String(item.description || item.detail || '').trim(),
+                    image: item.image || null,
+                    unitPrice,
+                    available: item.available !== false
+                };
+            }
+
+            function renderPublishedGallery(gallery) {
+                const container = document.querySelector('[data-content-gallery="food"]');
+                if (!container) return;
+                container.replaceChildren();
+                gallery.forEach((item, index) => {
+                    const figure = document.createElement('figure');
+                    figure.className = 'food-gallery-item';
+                    const image = document.createElement('img');
+                    image.src = item.src;
+                    image.alt = item.alt || item.title || `Cafe photo ${index + 1}`;
+                    image.width = Number(item.width) || 1200;
+                    image.height = Number(item.height) || 900;
+                    image.loading = 'lazy';
+                    image.decoding = 'async';
+                    const caption = document.createElement('figcaption');
+                    caption.textContent = item.caption || item.title || image.alt;
+                    figure.append(image, caption);
+                    container.append(figure);
+                });
+            }
+
+            function applyPublishedContent(content) {
+                if (!content || typeof content !== 'object') return false;
+                applySiteContent(content.site);
+                if (Array.isArray(content.menuCategories)) menuCategories = content.menuCategories;
+                if (Array.isArray(content.menuItems)) menuItems = content.menuItems.map(normalizePublishedItem);
+                if (Array.isArray(content.menuScanPages) && content.menuScanPages.length) menuScanPages = content.menuScanPages;
+                if (Array.isArray(content.gallery) && content.gallery.length) renderPublishedGallery(content.gallery);
+                knownMenuItems = new Map(menuItems.map(item => [item.id, item]));
+                cartState = cartState.filter(entry => knownMenuItems.has(entry.id) && knownMenuItems.get(entry.id).available !== false);
+                return true;
+            }
+
+            async function loadPublishedContent() {
+                try {
+                    const response = await fetch('/api/content', { headers: { Accept: 'application/json' } });
+                    if (!response.ok) throw new Error(`Content request failed with ${response.status}.`);
+                    const payload = await response.json();
+                    if (!payload.content) return;
+                    if (applyPublishedContent(payload.content)) {
+                        renderMenu();
+                        renderCart();
+                        setBookingBackendNote();
+                        registerLightboxImages();
+                    }
+                } catch (error) {
+                    console.warn('Published content is unavailable; using the built-in website content.', error);
+                }
+            }
+
             function formatMoney(amount) {
                 return `₹${amount.toLocaleString('en-IN')}`;
             }
@@ -2578,7 +3760,7 @@
                     return sum + knownMenuItems.get(entry.id).unitPrice * entry.quantity;
                 }, 0);
                 return [
-                    'Rua Beach Cafe order request:',
+                    `${siteProfile.name} order request:`,
                     ...lines,
                     `Subtotal from listed prices: ${formatMoney(subtotal)}`,
                     'Please confirm availability and the final bill. No order or payment is submitted by this website.'
@@ -2756,13 +3938,617 @@
             loadCart();
             renderCart();
 
+            const bookingForm = document.querySelector('#booking-form');
+            const bookingConfirmation = document.querySelector('#booking-confirmation');
+            const bookingDate = document.querySelector('#booking-date');
+            const bookingTime = document.querySelector('#booking-time');
+            const bookingGuests = document.querySelector('#booking-guests');
+            const bookingAvailability = document.querySelector('#booking-availability');
+            const bookingAvailabilityTitle = document.querySelector('#booking-availability-title');
+            const bookingAvailabilityCopy = document.querySelector('#booking-availability-copy');
+            const bookingFormStatus = document.querySelector('#booking-form-status');
+            const bookingConfirmationWhatsapp = document.querySelector('#booking-confirmation-whatsapp');
+            const bookingLookupForm = document.querySelector('#booking-lookup-form');
+            const bookingLookupResult = document.querySelector('#booking-lookup-result');
+            const bookingLookupTitle = document.querySelector('#booking-lookup-title');
+            const bookingLookupCopy = document.querySelector('#booking-lookup-copy');
+            const bookingCancelButton = document.querySelector('[data-booking-cancel]');
+            const bookingBackendNote = document.querySelector('#booking-backend-note');
+            const bookingSubmit = bookingForm.querySelector('button[type="submit"]');
+            const bookingApiUrl = '/api/reservations';
+            const bookingStorageKey = 'rua-beach-cafe-reservations-v1';
+            const bookingConfig = Object.freeze({
+                capacityPerSlot: 36,
+                maxGuests: 12,
+                maxDaysAhead: 365,
+                durationMinutes: 90
+            });
+            let reservationState = [];
+            let reservationStorageAvailable = true;
+            let activeReservation = null;
+            let activeLookupReservation = null;
+            let activeLookupPhone = '';
+            let bookingBackendMode = window.location.protocol === 'file:' ? 'local' : 'pending';
+            const bookingAvailabilityCache = new Map();
+            let bookingAvailabilityRequestDate = '';
+
+            function padNumber(value) {
+                return String(value).padStart(2, '0');
+            }
+
+            function formatDateInput(date) {
+                return `${date.getFullYear()}-${padNumber(date.getMonth() + 1)}-${padNumber(date.getDate())}`;
+            }
+
+            function parseDateInput(value) {
+                const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value || '');
+                if (!match) return null;
+                const year = Number(match[1]);
+                const month = Number(match[2]);
+                const day = Number(match[3]);
+                const date = new Date(year, month - 1, day);
+                return date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day
+                    ? date
+                    : null;
+            }
+
+            function formatReservationDate(value) {
+                const date = parseDateInput(value);
+                return date
+                    ? date.toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })
+                    : value;
+            }
+
+            function buildTimeSlots() {
+                const slots = [];
+                for (let minutes = 12 * 60; minutes <= 25 * 60; minutes += 30) {
+                    const normalizedMinutes = minutes >= 24 * 60 ? minutes - 24 * 60 : minutes;
+                    slots.push(`${padNumber(Math.floor(normalizedMinutes / 60))}:${padNumber(normalizedMinutes % 60)}`);
+                }
+                return slots;
+            }
+
+            function formatTimeLabel(value) {
+                const [rawHour, rawMinute] = value.split(':').map(Number);
+                const period = rawHour >= 12 ? 'PM' : 'AM';
+                const hour = rawHour % 12 || 12;
+                const nextDay = rawHour < 12 ? ' (next day)' : '';
+                return `${hour}:${padNumber(rawMinute)} ${period}${nextDay}`;
+            }
+
+            function normalizePhone(value) {
+                return String(value || '').replace(/\D/g, '');
+            }
+
+            function normalizeReservation(value) {
+                if (!value || typeof value !== 'object') return null;
+                const date = parseDateInput(value.date);
+                const time = typeof value.time === 'string' ? value.time : '';
+                const guests = Number(value.guests);
+                const name = typeof value.name === 'string' ? value.name.trim() : '';
+                const phone = typeof value.phone === 'string' ? value.phone.trim() : '';
+                if (!date || !buildTimeSlots().includes(time) ||
+                    !Number.isInteger(guests) || guests < 1 || guests > bookingConfig.maxGuests ||
+                    name.length < 2 || name.length > 60 || (phone && normalizePhone(phone).length < 8) ||
+                    typeof value.code !== 'string' || !/^RUA-[A-Z0-9-]+$/i.test(value.code)) {
+                    return null;
+                }
+                return {
+                    code: value.code.toUpperCase(),
+                    date: value.date,
+                    time,
+                    guests,
+                    name,
+                    phone,
+                    email: typeof value.email === 'string' ? value.email.trim().slice(0, 120) : '',
+                    occasion: typeof value.occasion === 'string' ? value.occasion.trim().slice(0, 40) : '',
+                    notes: typeof value.notes === 'string' ? value.notes.trim().slice(0, 400) : '',
+                    createdAt: typeof value.createdAt === 'string' ? value.createdAt : new Date().toISOString()
+                };
+            }
+
+            function loadReservations() {
+                if (bookingBackendMode !== 'local') return;
+                try {
+                    const stored = window.localStorage.getItem(bookingStorageKey);
+                    if (stored === null) return;
+                    const parsed = JSON.parse(stored);
+                    if (!Array.isArray(parsed)) throw new TypeError('Saved reservation data is not a list.');
+                    reservationState = parsed.map(normalizeReservation).filter(Boolean);
+                } catch (error) {
+                    reservationState = [];
+                    reservationStorageAvailable = false;
+                    console.warn('Reservation persistence is unavailable; bookings will stay in memory only.', error);
+                    showToast('Bookings saved only for this visit; browser storage is unavailable.');
+                }
+            }
+
+            function saveReservations() {
+                if (bookingBackendMode !== 'local') return false;
+                if (!reservationStorageAvailable) return false;
+                try {
+                    window.localStorage.setItem(bookingStorageKey, JSON.stringify(reservationState));
+                    return true;
+                } catch (error) {
+                    reservationStorageAvailable = false;
+                    console.warn('Reservation persistence is unavailable; bookings will stay in memory only.', error);
+                    return false;
+                }
+            }
+
+            function bookedGuestsForSlot(date, time) {
+                return reservationState
+                    .filter(reservation => reservation.date === date && reservation.time === time)
+                    .reduce((total, reservation) => total + reservation.guests, 0);
+            }
+
+            function availableGuestsForSlot(date, time) {
+                const remoteSlot = bookingAvailabilityCache.get(date)?.[time];
+                if (bookingBackendMode === 'online' && remoteSlot) return Number(remoteSlot.availableGuests);
+                return Math.max(0, bookingConfig.capacityPerSlot - bookedGuestsForSlot(date, time));
+            }
+
+            function setBookingAvailability(state, title, copy) {
+                bookingAvailability.dataset.state = state;
+                bookingAvailabilityTitle.textContent = title;
+                bookingAvailabilityCopy.textContent = copy;
+            }
+
+            function setBookingBackendNote() {
+                if (bookingBackendMode === 'local') {
+                    bookingBackendNote.textContent = 'Preview mode only. Publish this site with the API and environment variables for real bookings and email notifications.';
+                } else if (bookingBackendMode === 'pending') {
+                    bookingBackendNote.textContent = 'Connecting to live booking server...';
+                } else if (bookingBackendMode === 'online') {
+                    bookingBackendNote.textContent = 'Live booking server connected. No payment required.';
+                } else {
+                    bookingBackendNote.textContent = 'Live booking is unavailable. Use District or call the cafe.';
+                }
+            }
+
+            async function requestBooking(path = bookingApiUrl, options = {}) {
+                const response = await fetch(path, {
+                    ...options,
+                    headers: {
+                        Accept: 'application/json',
+                        ...(options.body ? { 'Content-Type': 'application/json' } : {}),
+                        ...(options.headers || {})
+                    }
+                });
+                let payload = null;
+                try {
+                    payload = await response.json();
+                } catch (error) {
+                    payload = null;
+                }
+                if (!response.ok) {
+                    const requestError = new Error(payload?.error || 'Booking service request failed.');
+                    requestError.code = payload?.code || 'BOOKING_REQUEST_FAILED';
+                    requestError.status = response.status;
+                    throw requestError;
+                }
+                return payload;
+            }
+
+            async function loadRemoteAvailability(date) {
+                if (bookingBackendMode === 'local' || bookingAvailabilityRequestDate === date) return;
+                bookingAvailabilityRequestDate = date;
+                setBookingAvailability('available', 'Checking live availability', 'Connecting to the reservation server...');
+                bookingSubmit.disabled = true;
+                try {
+                    const payload = await requestBooking(`${bookingApiUrl}?date=${encodeURIComponent(date)}`);
+                    if (payload.settings?.onlineBookingsEnabled === false) {
+                        bookingBackendMode = 'offline';
+                        setBookingBackendNote();
+                        setBookingAvailability('closed', 'Online bookings are paused', `Please call ${siteProfile.phone} to reserve.`);
+                        bookingSubmit.disabled = true;
+                        return;
+                    }
+                    bookingAvailabilityCache.set(date, payload.slots || {});
+                    bookingBackendMode = 'online';
+                    setBookingBackendNote();
+                    updateBookingAvailability();
+                } catch (error) {
+                    bookingBackendMode = 'offline';
+                    setBookingBackendNote();
+                    setBookingAvailability('closed', 'Live booking unavailable', `Use District or call ${siteProfile.phone}.`);
+                    bookingSubmit.disabled = true;
+                    console.error('Could not connect to the booking API.', error);
+                } finally {
+                    if (bookingAvailabilityRequestDate === date) bookingAvailabilityRequestDate = '';
+                }
+            }
+
+            function updateBookingAvailability() {
+                const date = bookingDate.value;
+                const time = bookingTime.value;
+                const guests = Number(bookingGuests.value) || 0;
+                const today = formatDateInput(new Date());
+                if (!date || !time) {
+                    setBookingAvailability('available', 'Select a date and time', 'Live availability updates here.');
+                    bookingSubmit.disabled = true;
+                    return;
+                }
+                if (!parseDateInput(date) || date < today) {
+                    setBookingAvailability('closed', 'Choose a current or future date', 'Past dates cannot be reserved.');
+                    bookingSubmit.disabled = true;
+                    return;
+                }
+                if (bookingBackendMode === 'pending') {
+                    setBookingBackendNote();
+                    loadRemoteAvailability(date);
+                    return;
+                }
+                if (bookingBackendMode === 'offline') {
+                    setBookingAvailability('closed', 'Live booking unavailable', `Use District or call ${siteProfile.phone}.`);
+                    bookingSubmit.disabled = true;
+                    return;
+                }
+                if (bookingBackendMode === 'online' && !bookingAvailabilityCache.has(date)) {
+                    loadRemoteAvailability(date);
+                    return;
+                }
+                const available = availableGuestsForSlot(date, time);
+                const state = available === 0 || available < guests ? 'closed' : available <= 12 ? 'limited' : 'available';
+                const title = available === 0 ? 'No tables available' : `${available} ${available === 1 ? 'seat' : 'seats'} available`;
+                const copy = available >= guests
+                    ? `${formatTimeLabel(time)} is available for this party.`
+                    : `Only ${available} ${available === 1 ? 'seat' : 'seats'} remain for this slot.`;
+                setBookingAvailability(state, title, copy);
+                bookingSubmit.disabled = available < guests;
+            }
+
+            function renderBookingTimes() {
+                const currentValue = bookingTime.value;
+                bookingTime.replaceChildren();
+                buildTimeSlots().forEach(time => {
+                    const option = document.createElement('option');
+                    option.value = time;
+                    option.textContent = formatTimeLabel(time);
+                    bookingTime.append(option);
+                });
+                bookingTime.value = buildTimeSlots().includes(currentValue) ? currentValue : '19:00';
+                updateBookingAvailability();
+            }
+
+            function createReservationCode(date) {
+                const datePart = date.replace(/-/g, '').slice(2);
+                let suffix = '';
+                do {
+                    try {
+                        const randomValues = new Uint32Array(1);
+                        window.crypto.getRandomValues(randomValues);
+                        suffix = randomValues[0].toString(36).toUpperCase().slice(-4).padStart(4, '0');
+                    } catch (error) {
+                        suffix = Math.floor(Math.random() * 0x10000).toString(36).toUpperCase().padStart(4, '0');
+                    }
+                } while (reservationState.some(reservation => reservation.code === `RUA-${datePart}-${suffix}`));
+                return `RUA-${datePart}-${suffix}`;
+            }
+
+            function reservationShareText(reservation) {
+                return [
+                    `${siteProfile.name} reservation`,
+                    `Confirmation: ${reservation.code}`,
+                    `Date: ${formatReservationDate(reservation.date)}`,
+                    `Time: ${formatTimeLabel(reservation.time)}`,
+                    `Guests: ${reservation.guests}`,
+                    `Name: ${reservation.name}`,
+                    `Please call ${siteProfile.phone} for changes.`
+                ].join('\n');
+            }
+
+            async function createRemoteReservation(payload) {
+                const response = await requestBooking(bookingApiUrl, {
+                    method: 'POST',
+                    body: JSON.stringify(payload)
+                });
+                const reservation = normalizeReservation(response?.reservation);
+                if (!reservation) throw new Error('Booking server returned an invalid reservation.');
+                return { reservation, notifications: response.notifications || {} };
+            }
+
+            function renderBookingConfirmation(reservation) {
+                bookingConfirmation.querySelector('h3').textContent = bookingBackendMode === 'online'
+                    ? 'Reservation confirmed.'
+                    : 'Reservation saved on this device.';
+                document.querySelector('#booking-confirmation-code').textContent = reservation.code;
+                document.querySelector('#booking-confirmation-date').textContent = formatReservationDate(reservation.date);
+                document.querySelector('#booking-confirmation-time').textContent = formatTimeLabel(reservation.time);
+                document.querySelector('#booking-confirmation-guests').textContent = `${reservation.guests} ${reservation.guests === 1 ? 'guest' : 'guests'}`;
+                document.querySelector('#booking-confirmation-name').textContent = reservation.name;
+                bookingConfirmationWhatsapp.href = `https://wa.me/?text=${encodeURIComponent(reservationShareText(reservation))}`;
+            }
+
+            function resetBookingForm(shouldFocus = true) {
+                activeReservation = null;
+                bookingConfirmation.hidden = true;
+                bookingForm.hidden = false;
+                bookingForm.reset();
+                const today = new Date();
+                const maxDate = new Date(today);
+                maxDate.setDate(maxDate.getDate() + bookingConfig.maxDaysAhead);
+                bookingDate.min = formatDateInput(today);
+                bookingDate.max = formatDateInput(maxDate);
+                bookingDate.value = formatDateInput(today);
+                bookingGuests.value = '2';
+                bookingFormStatus.textContent = '';
+                renderBookingTimes();
+                if (shouldFocus) bookingDate.focus();
+            }
+
+            function reservationStartDate(reservation) {
+                const date = parseDateInput(reservation.date);
+                const [hour, minute] = reservation.time.split(':').map(Number);
+                if (hour < 12) date.setDate(date.getDate() + 1);
+                date.setHours(hour, minute, 0, 0);
+                return date;
+            }
+
+            function icsEscape(value) {
+                return String(value).replace(/\\/g, '\\\\').replace(/([;,])/g, '\\$1').replace(/\r?\n/g, '\\n');
+            }
+
+            function toIcsDateTime(date) {
+                return `${date.getFullYear()}${padNumber(date.getMonth() + 1)}${padNumber(date.getDate())}T${padNumber(date.getHours())}${padNumber(date.getMinutes())}${padNumber(date.getSeconds())}`;
+            }
+
+            function downloadBookingCalendar() {
+                if (!activeReservation) return;
+                const start = reservationStartDate(activeReservation);
+                const end = new Date(start.getTime() + bookingConfig.durationMinutes * 60 * 1000);
+                const calendar = [
+                    'BEGIN:VCALENDAR',
+                    'VERSION:2.0',
+                    'PRODID:-//Rua Beach Cafe//Booking Engine//EN',
+                    'BEGIN:VEVENT',
+                    `UID:${activeReservation.code}@ruabeachcafe.local`,
+                    `DTSTAMP:${toIcsDateTime(new Date())}`,
+                    `DTSTART:${toIcsDateTime(start)}`,
+                    `DTEND:${toIcsDateTime(end)}`,
+                    `SUMMARY:${icsEscape(`${siteProfile.name} reservation`)}`,
+                    `LOCATION:${icsEscape(siteProfile.address)}`,
+                    `DESCRIPTION:${icsEscape(reservationShareText(activeReservation))}`,
+                    'END:VEVENT',
+                    'END:VCALENDAR'
+                ].join('\r\n');
+                const blob = new Blob([calendar], { type: 'text/calendar;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = `${activeReservation.code}.ics`;
+                document.body.append(link);
+                link.click();
+                link.remove();
+                window.setTimeout(() => URL.revokeObjectURL(url), 0);
+            }
+
+            function renderLookupResult(reservation, message) {
+                bookingLookupResult.hidden = false;
+                bookingLookupResult.dataset.state = reservation ? 'success' : 'error';
+                bookingLookupTitle.textContent = reservation ? reservation.code : 'Booking not found';
+                bookingLookupCopy.textContent = reservation
+                    ? `${reservation.name} - ${formatReservationDate(reservation.date)} at ${formatTimeLabel(reservation.time)} for ${reservation.guests} ${reservation.guests === 1 ? 'guest' : 'guests'}.`
+                    : message;
+                bookingCancelButton.hidden = !reservation;
+                activeLookupReservation = reservation;
+                if (!reservation) activeLookupPhone = '';
+            }
+
+            function lookupReservation(code, phone) {
+                const normalizedCode = code.trim().toUpperCase();
+                const normalizedPhone = normalizePhone(phone);
+                return reservationState.find(reservation =>
+                    reservation.code === normalizedCode && normalizePhone(reservation.phone) === normalizedPhone
+                ) || null;
+            }
+
+            async function lookupRemoteReservation(code, phone) {
+                const query = `?code=${encodeURIComponent(code.trim().toUpperCase())}&phone=${encodeURIComponent(phone.trim())}`;
+                const response = await requestBooking(`${bookingApiUrl}${query}`);
+                const reservation = normalizeReservation(response?.reservation);
+                if (!reservation) throw new Error('Booking server returned an invalid reservation.');
+                return reservation;
+            }
+
+            function runBookingSelfCheck() {
+                console.assert(buildTimeSlots().length === 27, 'Booking slot count changed unexpectedly.');
+                console.assert(formatTimeLabel('13:30') === '1:30 PM', 'Booking time formatting failed.');
+                console.assert(normalizePhone('+91 77380-84845') === '917738084845', 'Booking phone normalization failed.');
+            }
+
+            setBookingBackendNote();
+            loadReservations();
+            resetBookingForm(false);
+            runBookingSelfCheck();
+
+            bookingDate.addEventListener('change', updateBookingAvailability);
+            bookingTime.addEventListener('change', updateBookingAvailability);
+            bookingGuests.addEventListener('change', updateBookingAvailability);
+            bookingForm.addEventListener('submit', async event => {
+                event.preventDefault();
+                bookingFormStatus.textContent = '';
+                if (!bookingForm.reportValidity()) return;
+
+                if (bookingBackendMode === 'pending') {
+                    bookingFormStatus.textContent = 'Live booking server is still connecting. Try again in a moment.';
+                    return;
+                }
+                if (bookingBackendMode === 'offline') {
+                    bookingFormStatus.textContent = 'Live booking is unavailable. Use District or call the cafe.';
+                    return;
+                }
+
+                const formData = new FormData(bookingForm);
+                const date = String(formData.get('date') || '');
+                const time = String(formData.get('time') || '');
+                const guests = Number(formData.get('guests'));
+                const name = String(formData.get('name') || '').trim().replace(/\s+/g, ' ');
+                const phone = String(formData.get('phone') || '').trim();
+                const email = String(formData.get('email') || '').trim();
+                const occasion = String(formData.get('occasion') || '').trim();
+                const notes = String(formData.get('notes') || '').trim();
+                const website = String(formData.get('website') || '').trim();
+                if (website) {
+                    bookingFormStatus.textContent = 'Unable to process request.';
+                    return;
+                }
+                const today = formatDateInput(new Date());
+                const available = availableGuestsForSlot(date, time);
+                if (!parseDateInput(date) || date < today) {
+                    bookingFormStatus.textContent = 'Choose a current or future date.';
+                    return;
+                }
+                if (!Number.isInteger(guests) || guests < 1 || guests > bookingConfig.maxGuests || available < guests) {
+                    bookingFormStatus.textContent = 'Selected slot cannot fit this party. Choose another time.';
+                    updateBookingAvailability();
+                    return;
+                }
+
+                const payload = { date, time, guests, name, phone, email, occasion, notes, website };
+                if (bookingBackendMode === 'online') {
+                    bookingSubmit.disabled = true;
+                    bookingSubmit.textContent = 'Saving...';
+                    try {
+                        const result = await createRemoteReservation(payload);
+                        activeReservation = result.reservation;
+                        renderBookingConfirmation(activeReservation);
+                        bookingForm.hidden = true;
+                        bookingConfirmation.hidden = false;
+                        bookingAvailabilityCache.delete(date);
+                        showToast(result.notifications.owner
+                            ? result.notifications.guest ? 'Reservation confirmed. Emails sent.' : 'Reservation confirmed. Cafe email sent.'
+                            : 'Reservation confirmed.');
+                        bookingConfirmation.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'nearest' });
+                    } catch (error) {
+                        bookingFormStatus.textContent = error.code === 'SLOT_FULL'
+                            ? 'That slot filled up. Choose another time.'
+                            : error.message;
+                        bookingAvailabilityCache.delete(date);
+                        updateBookingAvailability();
+                    } finally {
+                        bookingSubmit.textContent = 'Confirm reservation';
+                    }
+                    return;
+                }
+
+                if (reservationState.some(reservation =>
+                    reservation.date === date && reservation.time === time && normalizePhone(reservation.phone) === normalizePhone(phone)
+                )) {
+                    bookingFormStatus.textContent = 'This mobile number already has a booking for this slot.';
+                    return;
+                }
+
+                const reservation = {
+                    code: createReservationCode(date),
+                    date,
+                    time,
+                    guests,
+                    name,
+                    phone,
+                    email,
+                    occasion,
+                    notes,
+                    createdAt: new Date().toISOString()
+                };
+                reservationState.push(reservation);
+                const saved = saveReservations();
+                activeReservation = reservation;
+                renderBookingConfirmation(reservation);
+                bookingForm.hidden = true;
+                bookingConfirmation.hidden = false;
+                updateBookingAvailability();
+                showToast(saved ? 'Reservation confirmed.' : 'Reservation confirmed for this visit only.');
+                bookingConfirmation.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'nearest' });
+            });
+
+            document.querySelector('[data-booking-calendar]').addEventListener('click', downloadBookingCalendar);
+            document.querySelector('[data-booking-new]').addEventListener('click', resetBookingForm);
+            bookingLookupForm.addEventListener('submit', async event => {
+                event.preventDefault();
+                if (!bookingLookupForm.reportValidity()) return;
+                const formData = new FormData(bookingLookupForm);
+                const code = String(formData.get('code') || '');
+                const phone = String(formData.get('phone') || '');
+                const normalizedPhone = normalizePhone(phone);
+                if (bookingBackendMode === 'pending') {
+                    renderLookupResult(null, 'Live booking server is still connecting. Try again in a moment.');
+                    return;
+                }
+                if (bookingBackendMode === 'offline') {
+                    renderLookupResult(null, 'Live booking is unavailable. Call the cafe for help.');
+                    return;
+                }
+                try {
+                    const reservation = bookingBackendMode === 'local'
+                        ? lookupReservation(code, phone)
+                        : await lookupRemoteReservation(code, phone);
+                    if (reservation) activeLookupPhone = normalizedPhone;
+                    renderLookupResult(reservation, 'Check the confirmation code and mobile number, then try again.');
+                } catch (error) {
+                    renderLookupResult(null, error.status === 404
+                        ? 'Check the confirmation code and mobile number, then try again.'
+                        : error.message);
+                }
+            });
+            bookingCancelButton.addEventListener('click', async () => {
+                if (!activeLookupReservation) return;
+                const confirmed = window.confirm(`Cancel reservation ${activeLookupReservation.code}?`);
+                if (!confirmed) return;
+                const cancelledCode = activeLookupReservation.code;
+                if (bookingBackendMode === 'pending' || bookingBackendMode === 'offline') {
+                    renderLookupResult(activeLookupReservation, 'Live booking is unavailable. Call the cafe for help.');
+                    return;
+                }
+                if (bookingBackendMode === 'online') {
+                    bookingCancelButton.disabled = true;
+                    try {
+                        const result = await requestBooking(bookingApiUrl, {
+                            method: 'DELETE',
+                            body: JSON.stringify({ code: cancelledCode, phone: activeLookupPhone })
+                        });
+                        const cancelledDate = activeLookupReservation.date;
+                        if (activeReservation?.code === cancelledCode) resetBookingForm(false);
+                        bookingAvailabilityCache.delete(cancelledDate);
+                        renderLookupResult(null, `${cancelledCode} was cancelled.`);
+                        showToast(result.notifications?.owner ? 'Reservation cancelled. Cafe notified.' : 'Reservation cancelled.');
+                        updateBookingAvailability();
+                    } catch (error) {
+                        bookingLookupResult.hidden = false;
+                        bookingLookupResult.dataset.state = 'error';
+                        bookingLookupTitle.textContent = 'Cancellation failed';
+                        bookingLookupCopy.textContent = error.message;
+                    } finally {
+                        bookingCancelButton.disabled = false;
+                    }
+                    return;
+                }
+                reservationState = reservationState.filter(reservation => reservation.code !== cancelledCode);
+                const saved = saveReservations();
+                if (activeReservation?.code === cancelledCode) resetBookingForm();
+                renderLookupResult(null, `${cancelledCode} was cancelled.`);
+                showToast(saved ? 'Reservation cancelled.' : 'Reservation cancelled for this visit only.');
+                updateBookingAvailability();
+            });
+            document.querySelectorAll('[data-open-booking]').forEach(link => {
+                link.addEventListener('click', () => window.setTimeout(() => bookingDate.focus(), 0));
+            });
+            window.addEventListener('storage', event => {
+                if (bookingBackendMode !== 'local' || event.key !== bookingStorageKey) return;
+                loadReservations();
+                updateBookingAvailability();
+            });
+
             function renderMenu() {
                 const categoryNav = document.querySelector('#menu-category-nav');
                 const categoryContainer = document.querySelector('#menu-item-categories');
                 const searchInput = document.querySelector('#menu-search');
                 const results = document.querySelector('#menu-results');
                 const dietButtons = Array.from(document.querySelectorAll('[data-menu-diet]'));
-                let selectedDiet = 'all';
+                categoryNav.replaceChildren();
+                categoryContainer.replaceChildren();
+                document.querySelector('#food-menu-scan-grid').replaceChildren();
+                document.querySelector('#bar-menu-scan-grid').replaceChildren();
 
                 menuCategories.forEach(category => {
                     const link = document.createElement('a');
@@ -2770,7 +4556,7 @@
                     link.textContent = category.label;
                     categoryNav.append(link);
 
-                    const categoryItems = menuItems.filter(item => item.category === category.id);
+                    const categoryItems = menuItems.filter(item => item.category === category.id && item.available !== false);
                     const section = document.createElement('details');
                     section.className = 'menu-category';
                     section.id = `menu-category-${category.id}`;
@@ -2868,12 +4654,12 @@
 
                 function filterMenu() {
                     const query = searchInput.value.trim().toLowerCase();
-                    const isFiltering = Boolean(query) || selectedDiet !== 'all';
+                    const isFiltering = Boolean(query) || selectedMenuDiet !== 'all';
                     let visibleCount = 0;
                     document.querySelectorAll('.menu-category').forEach(section => {
                         let sectionCount = 0;
                         section.querySelectorAll('.menu-item-card').forEach(card => {
-                            const matchesDiet = selectedDiet === 'all' || card.dataset.diet === selectedDiet;
+                            const matchesDiet = selectedMenuDiet === 'all' || card.dataset.diet === selectedMenuDiet;
                             const matchesQuery = !query || card.dataset.search.includes(query) ||
                                 card.querySelector('.menu-item-price').textContent.toLowerCase().includes(query);
                             card.hidden = !(matchesDiet && matchesQuery);
@@ -2886,26 +4672,37 @@
                     results.textContent = `${visibleCount} ${visibleCount === 1 ? 'item' : 'items'} shown`;
                 }
 
-                categoryNav.addEventListener('click', event => {
-                    const link = event.target.closest('a[href^="#menu-category-"]');
-                    if (!link) return;
-                    const section = document.querySelector(link.getAttribute('href'));
-                    if (section) section.open = true;
-                });
-
-                dietButtons.forEach(button => {
-                    button.addEventListener('click', () => {
-                        selectedDiet = button.dataset.menuDiet;
-                        dietButtons.forEach(filterButton => {
-                            filterButton.setAttribute('aria-pressed', String(filterButton === button));
-                        });
-                        filterMenu();
+                if (!menuHandlersBound) {
+                    categoryNav.addEventListener('click', event => {
+                        const link = event.target.closest('a[href^="#menu-category-"]');
+                        if (!link) return;
+                        const section = document.querySelector(link.getAttribute('href'));
+                        if (section) section.open = true;
                     });
-                });
-                searchInput.addEventListener('input', filterMenu);
+                    dietButtons.forEach(button => {
+                        button.addEventListener('click', () => {
+                            selectedMenuDiet = button.dataset.menuDiet;
+                            dietButtons.forEach(filterButton => {
+                                filterButton.setAttribute('aria-pressed', String(filterButton === button));
+                            });
+                            filterMenu();
+                        });
+                    });
+                    searchInput.addEventListener('input', filterMenu);
+                    menuHandlersBound = true;
+                }
                 filterMenu();
             }
 
+            themeToggle.addEventListener('click', () => {
+                const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+                applyTheme(nextTheme);
+                try {
+                    window.localStorage.setItem(themeStorageKey, nextTheme);
+                } catch (error) {
+                    console.warn('Theme preference could not be saved.', error);
+                }
+            });
             navToggle.addEventListener('click', () => {
                 const isOpen = navToggle.getAttribute('aria-expanded') !== 'true';
                 navLinks.classList.toggle('open', isOpen);
@@ -2934,6 +4731,7 @@
 
             renderMenu();
             registerLightboxImages();
+            loadPublishedContent();
             document.querySelectorAll('img').forEach(image => {
                 if (image.dataset.fallbackRegistered === 'true') return;
                 image.addEventListener('error', () => addImageFallback(image), { once: true });
